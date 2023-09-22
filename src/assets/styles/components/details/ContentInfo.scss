@@ -1,0 +1,376 @@
+.content-info-container {
+  width: 100%;
+  min-height: 80vh;
+
+  .spinner {
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .content-info {
+    display: flex;
+
+    .col1 {
+      width: 40%;
+      height: 80vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .poster {
+        .image,
+        .pulsing-img {
+          width: 350px;
+          height: 500px;
+          box-shadow: 0 0 24px rgba(0, 0, 0, 0.748);
+          position: relative;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.2s ease-in;
+          }
+
+          .edit-icon {
+            position: absolute;
+            bottom: 0;
+            background-color: rgba(128, 128, 128, 0.495);
+            width: 50px;
+            height: 50px;
+            border-top-right-radius: 30px;
+            border-top: 2px solid rgba(128, 128, 128, 0.132);
+            border-right: 4px solid rgba(128, 128, 128, 0.092);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+
+            .fa-arrows-spin {
+              color: rgb(49, 49, 49);
+              font-size: 2rem;
+              transition: all 0.2s ease-in-out;
+            }
+
+            &:hover {
+              background-color: gray;
+              border-color: rgba(0, 0, 0, 0.418);
+
+              .fa-arrows-spin {
+                color: rgb(0, 0, 0);
+              }
+            }
+          }
+        }
+
+        .pulsing-img {
+          background-image: url("@/assets/images/movie-poster-placeholder.png");
+          background-position: center;
+          background-size: cover;
+
+          &::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            animation: pulsing 2s infinite;
+          }
+        }
+
+        .btns {
+          display: flex;
+          flex-direction: column;
+          margin-top: 20px;
+
+          .btn-outline {
+            .folder-icon,
+            .fav-icon {
+              font-size: 1.6rem;
+              margin-right: 15px;
+              color: $light;
+              transition: all 0.2s ease;
+            }
+
+            span {
+              color: $light;
+              font-size: medium;
+              transition: all 0.2s ease;
+            }
+
+            &:hover {
+              .folder-icon,
+              .fav-icon {
+                color: $primary;
+              }
+
+              span {
+                color: $lighter;
+              }
+            }
+
+            &:active {
+              .folder-icon,
+              .fav-icon,
+              span {
+                color: gray;
+              }
+            }
+
+            &:disabled {
+              .folder-icon,
+              .fav-icon {
+                color: rgba(128, 128, 128, 0.405);
+              }
+
+              span {
+                color: rgba(128, 128, 128, 0.405);
+              }
+
+              &:hover {
+                .folder-icon,
+                .fav-icon {
+                  color: rgba(128, 128, 128, 0.405);
+                }
+
+                span {
+                  color: rgba(128, 128, 128, 0.405);
+                }
+              }
+
+              &:active {
+                .folder-icon,
+                .fav-icon,
+                span {
+                  color: rgba(128, 128, 128, 0.405);
+                }
+              }
+            }
+          }
+
+          .fav-btn,
+          .fav-btn-active {
+            margin-top: 15px;
+          }
+
+          .fav-btn-active {
+            border-color: $success;
+            background-color: rgba(5, 190, 128, 0.189);
+            transition: all 0.2s ease-in-out;
+
+            .fav-icon-active {
+              font-size: 1.6rem;
+              margin-right: 15px;
+              color: $success;
+              transition: all 0.2s ease;
+            }
+
+            span {
+              color: $success;
+              transition: all 0.2s ease;
+            }
+
+            &:hover {
+              border-color: $success-hover;
+              background-color: rgba(5, 190, 128, 0.362);
+
+              .fav-icon-active {
+                color: $success-hover;
+              }
+
+              span {
+                color: $success-hover;
+              }
+            }
+
+            &:active {
+              transform: none;
+              border-color: rgba(128, 128, 128, 0.405);
+
+              .fav-icon-active,
+              span {
+                color: rgba(21, 254, 153, 0.405);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .col2 {
+      flex: 1;
+
+      .info {
+        color: $light;
+
+        #title {
+          text-transform: capitalize;
+        }
+
+        #year {
+          margin-top: 10px;
+        }
+
+        .genres {
+          display: flex;
+          margin-top: 10px;
+
+          span {
+            text-transform: capitalize;
+
+            &:not(:first-child) {
+              margin-left: 20px;
+            }
+          }
+        }
+
+        #description {
+          margin-top: 20px;
+          padding-right: 10px;
+        }
+
+        .cast {
+          margin-top: 30px;
+          display: flex;
+          align-items: center;
+
+          .cast-members {
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+
+            #member {
+              color: rgb(159, 159, 159);
+              text-transform: capitalize;
+              margin-left: 10px;
+              margin-top: 5px;
+              margin-bottom: 5px;
+
+              &:not(:last-child) {
+                &::after {
+                  content: ",";
+                }
+              }
+            }
+          }
+        }
+
+        .director {
+          margin-top: 30px;
+          display: flex;
+          align-items: center;
+
+          .directors {
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+
+            #name {
+              justify-self: start;
+              color: rgb(159, 159, 159);
+              text-transform: capitalize;
+              margin-left: 10px;
+
+              &:not(:last-child) {
+                &::after {
+                  content: ",";
+                }
+              }
+            }
+          }
+        }
+
+        .rating {
+          margin-top: 40px;
+          display: flex;
+          width: 300px;
+          justify-content: space-between;
+          align-items: center;
+
+          .avg-rating {
+            display: flex;
+            align-items: flex-end;
+
+            .solid-star-icon {
+              font-size: 1.5rem;
+              color: $warning;
+            }
+
+            #no-rating {
+              margin-left: 5px;
+              font-size: large;
+              color: gray;
+            }
+
+            .avg-rating-num {
+              #num {
+                margin-left: 5px;
+                font-size: large;
+
+                span {
+                  color: gray;
+                  font-size: medium;
+                }
+              }
+              #votes {
+                margin-left: 5px;
+                font-size: small;
+                color: gray;
+              }
+            }
+          }
+
+          .user-rating {
+            .rated {
+              display: flex;
+              align-items: flex-end;
+              cursor: pointer;
+              transition: all 0.2s ease-in;
+
+              .solid-star-icon {
+                font-size: 1.5rem;
+                color: $primary;
+              }
+
+              &:hover {
+                .solid-star-icon {
+                  color: $primary-hover;
+                }
+              }
+
+              #num {
+                margin-left: 5px;
+                font-size: large;
+
+                span {
+                  color: gray;
+                  font-size: medium;
+                }
+              }
+            }
+
+            .empty-star-icon {
+              font-size: 1.5rem;
+              color: $primary;
+              cursor: pointer;
+              transition: all 0.2s ease-in;
+
+              &:hover {
+                color: $primary-hover;
+              }
+            }
+
+            .empty-star-icon-disabled {
+              color: rgb(96, 109, 131);
+              font-size: 1.5rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

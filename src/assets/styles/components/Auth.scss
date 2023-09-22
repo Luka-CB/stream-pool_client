@@ -1,0 +1,85 @@
+.auth-container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+
+  .spinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.729);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+  }
+
+  .form-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    padding: 20px;
+    border: 3px solid rgba(0, 221, 255, 0.218);
+    border-radius: 20px;
+
+    form {
+      width: 80%;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+
+      h1 {
+        text-align: center;
+        color: $primary;
+        text-shadow: 2px 2px 3px black;
+        letter-spacing: 5px;
+      }
+
+      .input-box {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+
+        input {
+          height: 50px;
+          font-size: large;
+        }
+      }
+
+      .btn-outline {
+        margin-top: 30px;
+        width: 150px;
+        align-self: center;
+        border-color: rgb(6, 94, 96);
+      }
+    }
+
+    .notice {
+      margin-top: 50px;
+      display: flex;
+      align-items: center;
+
+      p {
+        text-transform: capitalize;
+        color: $primary;
+      }
+
+      a {
+        margin-left: 10px;
+        text-transform: uppercase;
+        color: $light;
+        text-decoration: underline;
+        transition: 0.2s ease-in;
+        letter-spacing: 1px;
+
+        &:hover {
+          color: $primary;
+        }
+      }
+    }
+  }
+}

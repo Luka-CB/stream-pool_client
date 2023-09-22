@@ -1,6 +1,10 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
+import { createApp } from "vue";
+import { createHead } from "@vueuse/head";
+import App from "./App.vue";
+import router from "./router";
+import store from "./store";
+import "./assets/styles/index.scss";
 
-createApp(App).use(store).use(router).mount('#app')
+const head = createHead();
+
+createApp(App).use(head).use(store).use(router).mount("#app");

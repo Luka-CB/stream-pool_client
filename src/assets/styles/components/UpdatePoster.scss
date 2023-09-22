@@ -1,0 +1,286 @@
+.upd-poster-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.705);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .upd-poster-body {
+    width: 300px;
+    height: 600px;
+    background-color: rgb(2, 62, 57);
+    border-radius: 15px;
+    box-shadow: 0 0 28px rgba(1, 111, 102, 0.395);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+
+    .spinner {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+      background-color: rgba(0, 0, 0, 0.784);
+      border-radius: 15px;
+    }
+
+    .poster-wrapper {
+      width: 100%;
+      height: 480px;
+
+      .field {
+        width: 100%;
+        height: 400px;
+        transition: all 0.2s ease-in-out;
+        position: relative;
+
+        .label-btn {
+          width: 100%;
+          height: 100%;
+          background-color: transparent;
+          border: none;
+          outline: none;
+          transition: all 0.2s ease-in-out;
+          z-index: 10;
+          position: relative;
+
+          label {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+          }
+
+          &:active {
+            background-color: rgba(38, 69, 67, 0.49);
+            border-radius: 15px;
+          }
+        }
+
+        .field-text {
+          border-top: 2px dashed $primary;
+          border-bottom: 2px dashed $primary;
+          border-radius: 15px;
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          color: $primary;
+          transition: all 0.2s ease-in-out;
+
+          span {
+            font-size: 1.6rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+          }
+
+          .icons {
+            margin-top: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid rgb(87, 87, 87);
+            width: 80%;
+            border-radius: 40px;
+            padding-bottom: 10px;
+
+            .fa-plus {
+              font-size: 2rem;
+              margin-right: 10px;
+            }
+
+            .fa-image {
+              font-size: 3.5rem;
+              margin-left: 10px;
+            }
+          }
+        }
+
+        .image {
+          width: 100%;
+          height: 400px;
+          position: absolute;
+          top: 0;
+
+          img {
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            object-fit: cover;
+          }
+        }
+
+        &:hover {
+          .field-text {
+            border-color: $warning;
+            color: $warning;
+          }
+        }
+      }
+
+      .img-info {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px;
+
+        .col1 {
+          #name {
+            width: 200px;
+            font-weight: 400;
+          }
+
+          #size {
+            font-size: 0.7rem;
+            color: rgb(169, 169, 169);
+          }
+        }
+
+        .col2 {
+          #img-type {
+            color: rgb(169, 169, 169);
+          }
+        }
+      }
+    }
+
+    .btns {
+      display: flex;
+      flex-direction: column;
+
+      .btn-outline {
+        border-left: none;
+        border-radius: unset;
+        border-right: unset;
+
+        &:disabled {
+          border-color: rgba(128, 128, 128, 0.527);
+          cursor: default;
+
+          .fa-cloud-arrow-up,
+          .fa-xmark {
+            color: rgba(128, 128, 128, 0.527);
+            font-size: 1.2rem;
+          }
+
+          span {
+            color: rgba(128, 128, 128, 0.527);
+            font-size: 0.9rem;
+          }
+
+          &:hover {
+            background-color: transparent;
+
+            .fa-cloud-arrow-up,
+            .fa-xmark,
+            span {
+              color: rgba(128, 128, 128, 0.527);
+            }
+          }
+
+          &:active {
+            background-color: transparent;
+            border-color: rgba(128, 128, 128, 0.527);
+
+            .fa-cloud-arrow-up,
+            .fa-xmark,
+            span {
+              color: rgba(128, 128, 128, 0.527);
+            }
+          }
+        }
+      }
+
+      .upload-btn {
+        margin-bottom: 15px;
+        border-color: $success;
+        color: $success;
+
+        .fa-cloud-arrow-up {
+          margin-right: 20px;
+          font-size: 1.5rem;
+          transition: all 0.2s ease-in-out;
+        }
+
+        span {
+          font-size: medium;
+          text-transform: uppercase;
+          transition: all 0.2s ease-in-out;
+        }
+
+        &:hover {
+          background-color: rgba(127, 255, 212, 0.126);
+
+          .fa-cloud-arrow-up,
+          span {
+            color: $success-hover;
+          }
+        }
+
+        &:active {
+          background-color: transparent;
+          border-color: gray;
+
+          .fa-cloud-arrow-up,
+          span {
+            color: gray;
+          }
+        }
+      }
+
+      .cancel-btn {
+        border-color: $warning;
+        color: $warning;
+        border-bottom-right-radius: 15px;
+        border-bottom-left-radius: 15px;
+
+        .fa-xmark {
+          font-size: 1.5rem;
+          margin-right: 20px;
+          transition: all 0.2s ease-in-out;
+        }
+
+        span {
+          font-size: medium;
+          text-transform: uppercase;
+          transition: all 0.2s ease-in-out;
+        }
+
+        &:hover {
+          background-color: rgba(255, 249, 127, 0.126);
+
+          .fa-xmark,
+          span {
+            color: $warning-hover;
+          }
+        }
+
+        &:active {
+          background-color: transparent;
+          border-color: gray;
+
+          .fa-cloud-arrow-up,
+          span {
+            color: gray;
+          }
+        }
+      }
+    }
+  }
+}

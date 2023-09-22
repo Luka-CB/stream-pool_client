@@ -1,0 +1,128 @@
+$commentCardWidth: 450px;
+
+.user-comment {
+  position: relative;
+  width: $commentCardWidth;
+  background-color: rgb(4, 44, 41);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.315);
+  transition: all 0.2s ease-in-out;
+
+  &:not(:first-child) {
+    margin-left: 20px;
+  }
+
+  &:hover {
+    box-shadow: 0 0 25px rgba(4, 44, 41, 0.555);
+  }
+
+  .card-header {
+    width: $commentCardWidth;
+    padding: 10px;
+
+    #card-title {
+      display: inline;
+      text-transform: capitalize;
+      color: $primary;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .card-body {
+    height: 180px;
+    border-top: 1px solid rgba(128, 128, 128, 0.404);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.404);
+    #body-content {
+      font-size: small;
+      padding: 10px;
+      text-indent: 10px;
+    }
+  }
+
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 10px;
+
+    .col1 {
+      #date {
+        margin-top: 10px;
+        color: $primary;
+
+        em {
+          color: rgba(240, 248, 255, 0.616);
+          font-weight: 200;
+        }
+      }
+
+      #replies {
+        margin-top: 20px;
+        color: $primary;
+        cursor: pointer;
+
+        em {
+          color: rgba(240, 248, 255, 0.616);
+          font-weight: 200;
+        }
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .col2 {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-right: 10px;
+
+      .edit,
+      .delete {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: rgba(240, 248, 255, 0.02);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+      }
+
+      .edit {
+        margin-right: 20px;
+
+        .fa-pencil {
+          font-size: 1.1rem;
+        }
+
+        &:hover {
+          background-color: rgba(240, 248, 255, 0.05);
+
+          .fa-pencil {
+            color: $warning;
+            transition: all 0.1s ease-in-out;
+            font-size: 1.2rem;
+          }
+        }
+      }
+
+      .delete {
+        &:hover {
+          background-color: rgba(240, 248, 255, 0.05);
+
+          .fa-trash {
+            color: $danger;
+            transition: all 0.1s ease-in-out;
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+  }
+}

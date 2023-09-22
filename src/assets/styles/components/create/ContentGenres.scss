@@ -1,0 +1,40 @@
+.genres-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2em 1em;
+  justify-items: center;
+  margin-top: 50px;
+
+  .genre,
+  .genre-active {
+    border: 2px solid rgb(68, 68, 68);
+    width: 120px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: gray;
+    border-radius: 10px;
+    text-transform: capitalize;
+    cursor: pointer;
+    transition: all 0.1s ease-in;
+
+    &:hover {
+      background-color: rgba(240, 248, 255, 0.104);
+      border-color: $primary;
+      color: $primary;
+    }
+  }
+
+  .genre-active {
+    background-color: rgba(240, 248, 255, 0.104);
+    border-color: $primary;
+    color: $primary;
+
+    &:hover {
+      background-color: rgba(240, 248, 255, 0.045);
+      border-color: $primary-hover;
+      color: $primary-hover;
+    }
+  }
+}

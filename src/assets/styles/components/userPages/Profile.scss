@@ -1,0 +1,578 @@
+$contentCardWidth: 250px;
+$contentCardHeight: 450px;
+$contentCardImageHeight: 360px;
+
+.divider {
+  width: 100%;
+  height: 2px;
+  background-color: $primary;
+}
+
+.spinner {
+  width: 100%;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.warning {
+  width: 100%;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: capitalize;
+  color: $danger-hover;
+}
+
+.profile-container {
+  min-height: 100vh;
+
+  .user-info-container {
+    background-color: rgb(4, 44, 41);
+    position: relative;
+    margin: 0 auto;
+    margin-top: 100px;
+    width: 60%;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.381);
+    transition: all 0.2s ease-in-out;
+
+    .spinner {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .user-info-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      .col1 {
+        display: flex;
+        width: 80%;
+
+        .user-look {
+          width: 150px;
+          padding: 0 15px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+
+          .user-icon {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .fa-circle-user {
+              font-size: 5rem;
+              color: $primary;
+            }
+          }
+
+          .btn-primary {
+            width: 120px;
+            margin-top: 10px;
+            height: 30px;
+            text-transform: uppercase;
+            font-weight: bold;
+          }
+        }
+
+        .user-info {
+          #username {
+            color: $primary;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+          }
+
+          #email {
+            margin-top: 5px;
+            color: rgb(169, 169, 169);
+          }
+
+          #date {
+            margin-top: 5px;
+            color: rgb(154, 154, 154);
+
+            em {
+              font-size: small;
+            }
+          }
+        }
+      }
+
+      .col2 {
+        flex: 1;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+
+        .account-btn {
+          border: none;
+          outline: none;
+          background-color: $primary;
+          width: 50px;
+          height: 50px;
+          box-shadow: 0 8px 8px -4px rgba(0, 0, 0, 0.605);
+          border-radius: 50%;
+          cursor: pointer;
+          transition: all 0.1s ease-in-out;
+
+          .fa-pencil {
+            font-size: 1.4rem;
+            color: rgba(0, 0, 0, 0.696);
+            transition: all 0.1s ease-in-out;
+          }
+
+          &:hover {
+            background-color: $primary-hover;
+            box-shadow: 0 14px 14px -4px rgba(0, 0, 0, 0.76);
+
+            .fa-pencil {
+              font-size: 1.6rem;
+              color: rgb(0, 0, 0);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .rated-content-container {
+    margin-top: 100px;
+    height: 80vh;
+
+    #title {
+      margin: 10px;
+      text-transform: capitalize;
+      color: $primary;
+    }
+
+    .rated-contents {
+      padding: 40px 25px;
+      display: flex;
+      overflow-x: scroll;
+      min-height: 200px;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      .content {
+        width: $contentCardWidth;
+        height: $contentCardHeight;
+        background-color: rgb(4, 44, 41);
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.315);
+        transition: all 0.2s ease-in-out;
+
+        &:not(:first-child) {
+          margin-left: 20px;
+        }
+
+        &:hover {
+          box-shadow: 0 0 25px rgba(4, 44, 41, 0.555);
+        }
+
+        .pulsing-img,
+        .image {
+          width: $contentCardWidth;
+          height: $contentCardImageHeight;
+          cursor: pointer;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        .pulsing-img {
+          background-image: url("@/assets/images/movie-poster-placeholder.png");
+          background-position: center;
+          background-size: cover;
+          position: relative;
+
+          &::before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: rgba(240, 248, 255, 0.4);
+            animation: pulsing 2s ease-in-out infinite;
+          }
+        }
+
+        .info {
+          height: calc($contentCardHeight - $contentCardImageHeight);
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+
+          .content-title {
+            display: flex;
+            align-items: center;
+
+            #name {
+              color: $primary;
+              text-transform: capitalize;
+            }
+
+            #year {
+              color: rgba(255, 255, 255, 0.519);
+              font-size: small;
+              margin-left: 5px;
+            }
+
+            &:hover {
+              text-decoration: underline;
+              text-decoration-color: $primary;
+              cursor: pointer;
+            }
+          }
+
+          .rating {
+            width: 100%;
+            color: black;
+            display: flex;
+            justify-content: space-around;
+            margin-top: 15px;
+
+            .avg-rating {
+              display: flex;
+              align-items: center;
+
+              .star-solid {
+                color: $warning;
+                font-size: 1.2rem;
+              }
+
+              span {
+                color: aliceblue;
+                margin-left: 5px;
+
+                em {
+                  color: rgba(255, 255, 255, 0.519);
+                  font-size: 0.9rem;
+                }
+              }
+            }
+
+            .user-rating {
+              display: flex;
+              align-items: center;
+
+              .star-rated {
+                color: $primary;
+                font-size: 1.2rem;
+                transition: all 0.2s ease-in-out;
+              }
+
+              span {
+                color: aliceblue;
+                margin-left: 5px;
+
+                em {
+                  color: rgba(255, 255, 255, 0.519);
+                  font-size: 0.9rem;
+                }
+              }
+
+              &:hover {
+                cursor: pointer;
+
+                .star-rated {
+                  color: $primary-hover;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .fav-content-container {
+    margin-top: 100px;
+    height: 80vh;
+
+    #title {
+      margin: 10px;
+      text-transform: capitalize;
+      color: $primary;
+    }
+
+    .fav-contents {
+      padding: 40px 25px;
+      display: flex;
+      overflow-x: scroll;
+      min-height: 200px;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      .content {
+        width: $contentCardWidth;
+        height: $contentCardHeight;
+        background-color: rgb(4, 44, 41);
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.315);
+        transition: all 0.2s ease-in-out;
+
+        &:not(:first-child) {
+          margin-left: 20px;
+        }
+
+        &:hover {
+          box-shadow: 0 0 25px rgba(4, 44, 41, 0.555);
+        }
+
+        .pulsing-img,
+        .image {
+          width: $contentCardWidth;
+          height: $contentCardImageHeight;
+          cursor: pointer;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        .pulsing-img {
+          background-image: url("@/assets/images/movie-poster-placeholder.png");
+          background-position: center;
+          background-size: cover;
+          position: relative;
+
+          &::before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: rgba(240, 248, 255, 0.4);
+            animation: pulsing 2s ease-in-out infinite;
+          }
+        }
+
+        .info {
+          height: calc($contentCardHeight - $contentCardImageHeight);
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+
+          .content-title {
+            display: flex;
+            align-items: center;
+
+            #name {
+              color: $primary;
+              text-transform: capitalize;
+            }
+
+            #year {
+              color: rgba(255, 255, 255, 0.519);
+              font-size: small;
+              margin-left: 5px;
+            }
+
+            &:hover {
+              text-decoration: underline;
+              text-decoration-color: $primary;
+              cursor: pointer;
+            }
+          }
+
+          .fav-icon {
+            margin-top: 10px;
+            width: 50px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .fa-heart {
+              font-size: 1.5rem;
+              color: $primary;
+              cursor: pointer;
+              transition: all 0.1s ease-in-out;
+            }
+
+            .heart-beat {
+              animation: heart 400ms infinite;
+            }
+
+            &:hover {
+              .fa-heart {
+                color: $primary-hover;
+                font-size: 1.6rem;
+              }
+            }
+
+            @keyframes heart {
+              0% {
+                transform: scale(0.9);
+                color: $primary;
+              }
+              50% {
+                transform: scale(1);
+                color: $primary-hover;
+              }
+              100% {
+                transform: scale(0.9);
+                color: $primary;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .user-comments-container {
+    margin-top: 100px;
+    height: 80vh;
+
+    #title {
+      margin: 10px;
+      text-transform: capitalize;
+      color: $primary;
+    }
+
+    .user-comments {
+      padding: 40px 25px;
+      display: flex;
+      overflow-x: scroll;
+      min-height: 200px;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+
+  .user-lists-container {
+    margin-top: 100px;
+    height: 80vh;
+
+    .user-lists-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      #title {
+        margin: 10px;
+        text-transform: capitalize;
+        color: $primary;
+      }
+
+      .add-btn {
+        margin-right: 10px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        .fa-circle-plus {
+          margin-right: 5px;
+          font-size: 1.4rem;
+        }
+
+        &:hover {
+          transition: all 0.2s ease-in-out;
+          color: $primary;
+        }
+      }
+    }
+
+    .user-lists {
+      padding: 40px 25px;
+      display: flex;
+      overflow-x: scroll;
+      min-height: 200px;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+}
+
+.profile-link {
+  width: 100%;
+  padding: 0 20px;
+  display: flex;
+  justify-content: flex-end;
+
+  #link-text {
+    font-weight: 400;
+    color: $primary;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+
+    em {
+      width: 40px;
+      font-weight: 900;
+      padding: 5px;
+      font-size: large;
+      font-style: normal;
+      text-align: center;
+      position: relative;
+      flex-direction: column;
+      transition: all 0.3s ease-in-out;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background-color: $primary-hover;
+        transition: all 0.3s ease-in-out;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 0;
+        height: 1px;
+        background-color: $primary-hover;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+
+    &:hover {
+      color: $primary-hover;
+      cursor: pointer;
+
+      em {
+        background-color: rgb(4, 44, 41);
+
+        &::before {
+          content: "";
+          width: 40px;
+          height: 2px;
+        }
+
+        &::after {
+          content: "";
+          width: 40px;
+          height: 2px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,297 @@
+.rating-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.707);
+
+  .rating-container {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 450px;
+    background-color: rgb(4, 44, 41);
+    box-shadow: 0 0 28px rgba(5, 138, 127, 0.282);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 20px;
+    border: 2px solid rgba(4, 86, 79, 0.559);
+    border-top: 6px solid rgba(4, 86, 79, 0.559);
+
+    .fa-circle-xmark {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 10px;
+      font-size: 2rem;
+      color: rgb(1, 192, 192);
+      transition: all 0.2s ease-in-out;
+      cursor: pointer;
+
+      &:hover {
+        color: rgb(1, 133, 133);
+      }
+    }
+
+    .rated-val-wrapper {
+      width: 150px;
+      height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+
+      .fa-star {
+        color: rgba(0, 127, 139, 0.966);
+        transition: all 0.1s ease-in;
+      }
+
+      .num {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: "Courier New", Courier, monospace;
+        font-weight: 800;
+        transition: all 0.1s ease-in;
+      }
+    }
+
+    #title {
+      text-transform: capitalize;
+    }
+
+    .stars {
+      width: 90%;
+      display: flex;
+      justify-content: center;
+
+      label {
+        input {
+          display: none;
+        }
+
+        .star,
+        .star-fill {
+          font-size: 2.5rem;
+          padding: 0 5px;
+          cursor: pointer;
+          color: $primary;
+        }
+      }
+    }
+
+    .btns {
+      width: 90%;
+      display: flex;
+      justify-content: space-around;
+
+      .btn-outline {
+        width: 180px;
+        height: 35px;
+        font-size: large;
+
+        &:disabled {
+          border-color: rgba(128, 128, 128, 0.275);
+          color: rgba(128, 128, 128, 0.356);
+          cursor: default;
+
+          &:hover {
+            background-color: transparent;
+            border-color: rgba(128, 128, 128, 0.275);
+            color: rgba(128, 128, 128, 0.356);
+          }
+
+          &:active {
+            transform: none;
+            border-color: rgba(128, 128, 128, 0.275);
+            color: rgba(128, 128, 128, 0.356);
+          }
+        }
+      }
+
+      .rate-btn {
+        border-color: $success;
+        color: $success;
+
+        &:hover {
+          background-color: rgba(127, 255, 212, 0.112);
+          border-color: $success-hover;
+          color: $success-hover;
+        }
+
+        &:active {
+          transform: scale(0.97);
+          border-color: rgb(120, 162, 148);
+          color: rgb(120, 162, 148);
+          background-color: transparent;
+        }
+      }
+
+      .del-btn {
+        border-color: rgb(238, 85, 85);
+        color: rgb(247, 101, 101);
+
+        &:hover {
+          background-color: rgba(238, 85, 85, 0.171);
+          border-color: rgb(255, 106, 106);
+          color: rgb(230, 89, 103);
+        }
+
+        &:active {
+          transform: scale(0.97);
+          border-color: rgb(149, 122, 122);
+          color: rgb(151, 121, 121);
+          background-color: transparent;
+        }
+      }
+    }
+
+    @media (min-width: 1700px) {
+      width: 850px;
+      height: 400px;
+
+      .rated-val {
+        width: 120px;
+        height: 120px;
+
+        .num {
+          font-size: 4.5rem;
+        }
+      }
+
+      .stars {
+        label {
+          .star {
+            font-size: 4rem;
+          }
+          .star-fill {
+            font-size: 4rem;
+          }
+        }
+      }
+
+      .btns {
+        .rate-btn {
+          width: 200px;
+          padding: 10px 0;
+          font-size: 2rem;
+        }
+
+        .del-btn {
+          width: 200px;
+          padding: 10px 0;
+          font-size: 2rem;
+        }
+
+        .disabled {
+          width: 200px;
+          padding: 10px 0;
+          font-size: 2rem;
+        }
+      }
+    }
+
+    @media (max-width: 500px) {
+      width: 220px;
+      height: 100px;
+
+      .rated-val {
+        width: 40px;
+        height: 40px;
+        margin-top: 0;
+
+        .num {
+          font-size: 1.5rem;
+        }
+      }
+
+      .stars {
+        label {
+          .star {
+            font-size: 1rem;
+          }
+          .star-fill {
+            font-size: 1rem;
+          }
+        }
+      }
+
+      .btns {
+        .rate-btn {
+          width: 50px;
+          padding: 1px 0;
+          font-size: 0.6rem;
+        }
+
+        .del-btn {
+          width: 50px;
+          padding: 1px 0;
+          font-size: 0.6rem;
+        }
+
+        .disabled {
+          width: 50px;
+          padding: 1px 0;
+          font-size: 0.6rem;
+        }
+      }
+    }
+  }
+
+  .not-loggedin {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $light;
+    width: 450px;
+    padding: 20px 0;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0 15px 10px -4px $darker;
+
+    a {
+      color: $danger;
+      text-transform: uppercase;
+      font-size: 1.5rem;
+      transition: 0.3s ease-in-out;
+
+      &:hover {
+        color: $danger-hover;
+        text-decoration: underline;
+      }
+    }
+
+    @media (min-width: 1700px) {
+      width: 650px;
+
+      h3 {
+        font-size: 2rem;
+      }
+
+      a {
+        font-size: 3rem;
+      }
+    }
+
+    @media (max-width: 500px) {
+      width: 250px;
+      padding: 20px 0;
+
+      h3 {
+        font-size: 0.8rem;
+      }
+
+      a {
+        font-size: 1rem;
+      }
+    }
+  }
+}

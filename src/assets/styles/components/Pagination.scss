@@ -1,0 +1,108 @@
+.pagination-container {
+  padding: 50px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    border: 2px solid $primary;
+    width: 60px;
+    height: 35px;
+    display: flex;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+
+    .icon {
+      color: $primary;
+      font-size: large;
+      transition: 0.2s ease-in-out;
+    }
+
+    &:hover {
+      background-color: rgba(240, 248, 255, 0.086);
+      box-shadow: 0 0 6px rgb(200, 127, 0);
+      border-color: $warning;
+
+      .icon {
+        color: $warning;
+      }
+    }
+
+    &:active {
+      transform: scale(0.97);
+      border-color: gray;
+      box-shadow: 0 0 6px gray;
+
+      .icon {
+        color: gray;
+      }
+    }
+
+    &:disabled {
+      transform: none;
+      border-color: rgba(128, 128, 128, 0.442);
+      border-width: 1px;
+      box-shadow: none;
+      background-color: transparent;
+      cursor: default;
+
+      .icon {
+        color: rgba(128, 128, 128, 0.442);
+      }
+    }
+  }
+
+  .first-btn,
+  .left-btn {
+    margin-right: 10px;
+  }
+
+  .last-btn,
+  .right-btn {
+    margin-left: 10px;
+  }
+
+  .middle {
+    display: flex;
+    align-items: center;
+
+    span {
+      margin-right: 5px;
+      font-size: large;
+    }
+
+    b {
+      margin-left: 5px;
+      font-size: large;
+    }
+  }
+
+  .total {
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+
+    h5 {
+      color: gray;
+    }
+
+    .circle {
+      width: 50px;
+      height: 50px;
+      border: 1px solid rgba(0, 255, 255, 0.207);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(0, 255, 255, 0.622);
+      margin-left: 10px;
+      font-weight: 200;
+    }
+  }
+}
