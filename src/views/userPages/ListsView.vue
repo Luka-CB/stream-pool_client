@@ -1,13 +1,16 @@
 <template>
   <div class="lists-container">
-    <go-back :route="prevRoute" />
-    <div class="home-icon" title="Back to home page" @click="handleNavigation">
-      <i class="fa-solid fa-house-chimney-window"></i>
+    <div class="icon-btns">
+      <go-back :route="prevRoute" />
+      <div
+        class="home-icon"
+        title="Back to home page"
+        @click="handleNavigation"
+      >
+        <i class="fa-solid fa-house-chimney-window"></i>
+      </div>
     </div>
-
-    <div class="nav-wrapper">
-      <profile-nav />
-    </div>
+    <profile-nav />
     <div class="lists-wrapper">
       <div class="spinner" v-if="isGetListsLoading">
         <spinner-vue :height="4" :width="4" />
@@ -28,7 +31,7 @@ import { useStore } from "vuex";
 import GoBack from "../../components/GoBack.vue";
 import ListCard from "../../components/userPages/ListCard.vue";
 import ListsConfig from "../../components/userPages/listsView/ListsConfig.vue";
-import ProfileNav from "../../components/userPages/ProfileNav.vue";
+import ProfileNav from "../../components/navigation/ProfileNav.vue";
 import SpinnerVue from "../../components/Spinner.vue";
 
 export default defineComponent({
@@ -42,6 +45,7 @@ export default defineComponent({
     const router = useRouter();
 
     const routeName = computed(() => route.name);
+
     watchEffect(() => {
       if (routeName.value) {
         store.commit("SET_EXCLUDE_ROUTE", routeName.value);

@@ -1,4 +1,6 @@
+$commentCardWidthLg: 600px;
 $commentCardWidth: 450px;
+$commentCardWidthSm: 350px;
 
 .user-comment {
   position: relative;
@@ -120,6 +122,165 @@ $commentCardWidth: 450px;
             color: $danger;
             transition: all 0.1s ease-in-out;
             font-size: 1.2rem;
+          }
+        }
+      }
+    }
+  }
+
+  @media (min-width: 1920px) {
+    width: $commentCardWidthLg;
+
+    .card-header {
+      width: $commentCardWidthLg;
+
+      #card-title {
+        font-size: 1.8rem;
+      }
+    }
+
+    .card-body {
+      height: 300px;
+
+      #body-content {
+        font-size: large;
+      }
+    }
+
+    .card-footer {
+      padding: 10px;
+
+      .col1 {
+        #date {
+          margin-top: 5px;
+          font-size: 1.2rem;
+
+          em {
+            font-size: 1.1rem;
+          }
+        }
+
+        #replies {
+          margin-top: 30px;
+          font-size: 1.5rem;
+        }
+      }
+
+      .col2 {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-right: 10px;
+
+        .edit,
+        .delete {
+          width: 70px;
+          height: 70px;
+        }
+
+        .edit {
+          margin-right: 20px;
+
+          .fa-pencil {
+            font-size: 1.8rem;
+          }
+
+          &:hover {
+            background-color: rgba(240, 248, 255, 0.05);
+
+            .fa-pencil {
+              font-size: 1.9rem;
+              color: $warning;
+            }
+          }
+        }
+
+        .delete {
+          .fa-trash {
+            font-size: 1.6rem;
+          }
+
+          &:hover {
+            background-color: rgba(240, 248, 255, 0.05);
+
+            .fa-trash {
+              color: $danger;
+              font-size: 1.8rem;
+              transition: all 0.1s ease-in-out;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 800px) {
+    width: $commentCardWidthSm;
+
+    .card-header {
+      width: $commentCardWidthSm;
+      padding: 10px;
+
+      #card-title {
+        font-size: medium;
+      }
+    }
+
+    .card-body {
+      height: 100px;
+
+      #body-content {
+        font-size: 0.7rem;
+      }
+    }
+
+    .card-footer {
+      padding: 5px;
+
+      .col1 {
+        #date {
+          margin-top: 5px;
+          font-size: 0.7rem;
+
+          em {
+            font-size: 0.6rem;
+          }
+        }
+
+        #replies {
+          margin-top: 10px;
+          font-size: small;
+        }
+      }
+
+      .col2 {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-right: 10px;
+
+        .edit,
+        .delete {
+          width: 40px;
+          height: 40px;
+        }
+
+        .edit {
+          margin-right: 20px;
+          background-color: rgba(240, 248, 255, 0.05);
+
+          .fa-pencil {
+            font-size: 1rem;
+            color: $warning;
+          }
+        }
+
+        .delete {
+          background-color: rgba(240, 248, 255, 0.05);
+
+          .fa-trash {
+            color: $danger;
+            font-size: 1rem;
           }
         }
       }

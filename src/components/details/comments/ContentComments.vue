@@ -1,5 +1,5 @@
 <template>
-  <div class="comments-container" @click="click">
+  <div class="comments-container" @click="handleToggleOption('')">
     <h1 class="title">
       Comments - <i>( {{ commentsCount }} )</i>
     </h1>
@@ -66,6 +66,41 @@
             <span>reply</span>
             <i class="fa-solid fa-reply"></i>
           </button>
+          <div
+            class="comment-option"
+            v-if="windowWidth <= 500 && user?.id === comment?.user?._id"
+            @click.stop="handleToggleOption(comment?._id)"
+          >
+            <div class="option-icon">
+              <i class="fa-solid fa-ellipsis-vertical"></i>
+            </div>
+            <div
+              class="option-wrapper"
+              v-if="showCommentOption && optionCommentId === comment?._id"
+            >
+              <button
+                class="edit"
+                title="Edit Comment"
+                @click="handleOpenEditCommentModal(comment?._id, comment?.text)"
+              >
+                <i class="fa-solid fa-pencil"></i>
+                <span>edit</span>
+              </button>
+              <button
+                class="delete"
+                title="Delete Comment"
+                @click="handleOpenPrompt(comment?._id)"
+              >
+                <spinner-alt
+                  :size="24"
+                  color="#d50000"
+                  v-if="commentId === comment?._id && isDelCommentLoading"
+                />
+                <i class="fa-solid fa-trash del-icon" v-else></i>
+                <span>delete</span>
+              </button>
+            </div>
+          </div>
         </div>
         <div class="divider"></div>
         <div class="col2">
@@ -88,6 +123,7 @@ import { useStore } from "vuex";
 import SpinnerAlt from "../../SpinnerAlt.vue";
 import SpinnerVue from "../../Spinner.vue";
 import CommentReplies from "./CommentReplies.vue";
+import { useWindowWidth } from "../../../composables/windowResize";
 
 export default defineComponent({
   name: "ContentComments",
@@ -98,6 +134,9 @@ export default defineComponent({
     const store = useStore();
 
     const text = ref("");
+    const showCommentOption = ref(false);
+
+    const { windowWidth } = useWindowWidth();
 
     const comments = computed(() => store.getters.comments);
     const commentsCount = computed(() => store.getters.commentsCount);
@@ -184,7 +223,12 @@ export default defineComponent({
       });
     };
 
-    const click = () => console.log("text");
+    const optionCommentId = ref("");
+
+    const handleToggleOption = (commentId: string) => {
+      optionCommentId.value = commentId;
+      showCommentOption.value = !showCommentOption.value;
+    };
 
     return {
       text,
@@ -201,7 +245,10 @@ export default defineComponent({
       prompt,
       isDelCommentLoading,
       commentId,
-      click,
+      windowWidth,
+      showCommentOption,
+      handleToggleOption,
+      optionCommentId,
     };
   },
 });

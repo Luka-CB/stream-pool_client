@@ -60,6 +60,38 @@ export default defineComponent({
   margin: 100px auto;
   box-shadow: 0 0 100px rgba(1, 54, 6, 0.644), 0 12px 12px -4px black;
   position: relative;
+  transition: all 0.2s ease-in-out;
+
+  @media (min-width: 1920px) {
+    margin: 200px auto;
+    width: 80%;
+    height: 90vh;
+  }
+
+  @media (max-width: 1000px) {
+    width: 90%;
+    height: 70vh;
+  }
+
+  @media (max-width: 800px) {
+    height: 60vh;
+  }
+
+  @media (max-width: 600px) {
+    height: 50vh;
+  }
+
+  @media (max-width: 500px) {
+    height: 40vh;
+  }
+
+  @media (max-width: 350px) {
+    height: 30vh;
+  }
+
+  @media (max-width: 270px) {
+    height: 25vh;
+  }
 
   .error {
     width: 100%;
@@ -68,6 +100,7 @@ export default defineComponent({
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    transition: all 0.2s ease-in-out;
 
     .fa-video-slash {
       font-size: 4rem;
@@ -90,12 +123,14 @@ export default defineComponent({
   iframe {
     width: 100%;
     height: 100%;
+    transition: all 0.2s ease-in-out;
   }
 
   .btn-primary {
     width: 150px;
     margin-top: 10px;
     height: 30px;
+    transition: all 0.2s ease-in-out;
 
     .fa-plus {
       font-size: 1.5rem;
@@ -109,6 +144,25 @@ export default defineComponent({
       text-transform: capitalize;
       color: #1a7c7b;
       transition: all 0.2s ease-in-out;
+    }
+
+    @media (min-width: 1920px) {
+      width: 250px;
+      height: 50px;
+      margin-top: 40px;
+
+      .fa-plus {
+        font-size: 2.5rem;
+      }
+
+      span {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 500px) {
+      width: 100%;
+      margin-top: 20px;
     }
 
     &:hover {

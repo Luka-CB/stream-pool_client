@@ -1,13 +1,17 @@
 <template>
   <div class="account-container">
-    <go-back :route="prevRoute" />
-    <div class="home-icon" title="Back to home page" @click="handleNavigation">
-      <i class="fa-solid fa-house-chimney-window"></i>
+    <div class="icon-btns">
+      <go-back :route="prevRoute" />
+      <div
+        class="home-icon"
+        title="Back to home page"
+        @click="handleNavigation"
+      >
+        <i class="fa-solid fa-house-chimney-window"></i>
+      </div>
     </div>
 
-    <div class="nav-wrapper">
-      <profile-nav />
-    </div>
+    <profile-nav />
 
     <div class="spinner" v-if="isLoading">
       <spinner-vue :height="5" :width="5" />
@@ -27,7 +31,7 @@ import { useStore } from "vuex";
 import GoBack from "../../components/GoBack.vue";
 import AccountForm from "../../components/userPages/accountView/AccountForm.vue";
 import DeleteAccount from "../../components/userPages/accountView/DeleteAccount.vue";
-import ProfileNav from "../../components/userPages/ProfileNav.vue";
+import ProfileNav from "../../components/navigation/ProfileNav.vue";
 import SpinnerVue from "../../components/Spinner.vue";
 
 export default defineComponent({

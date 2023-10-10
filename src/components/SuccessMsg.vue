@@ -42,5 +42,11 @@ export default defineComponent({
   font-size: large;
   text-align: center;
   padding: 0 10px;
+  transition: all 0.2s ease;
+
+  @media (min-width: 1920px) {
+    height: 70px;
+    font-size: 1.5rem;
+  }
 }
 </style>

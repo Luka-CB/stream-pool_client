@@ -25,26 +25,30 @@
         <div className="link">
           <p id="name">View my portfolio website</p>
           <span id="dash">-</span>
-          <b id="here">here</b>
-          <i class="fa-solid fa-arrow-right-long"></i>
-          <a href="#" target="_blank">
-            <button className="link-btn">
-              <i class="fa-solid fa-globe icon"></i>
-              <span id="btn-name">Portfolio</span>
-            </button>
-          </a>
+          <div class="btn-wrapper">
+            <b id="here">here</b>
+            <i class="fa-solid fa-arrow-right-long"></i>
+            <a href="#" target="_blank">
+              <button className="link-btn">
+                <i class="fa-solid fa-globe icon"></i>
+                <span id="btn-name">Portfolio</span>
+              </button>
+            </a>
+          </div>
         </div>
         <div className="link">
           <p id="name">View website Code</p>
           <span id="dash">-</span>
-          <b id="here">here</b>
-          <i class="fa-solid fa-arrow-right-long"></i>
-          <a href="#" target="_blank">
-            <button className="link-btn">
-              <i class="fa-brands fa-github icon"></i>
-              <span id="btn-name">Github</span>
-            </button>
-          </a>
+          <div class="btn-wrapper">
+            <b id="here">here</b>
+            <i class="fa-solid fa-arrow-right-long"></i>
+            <a href="#" target="_blank">
+              <button className="link-btn">
+                <i class="fa-brands fa-github icon"></i>
+                <span id="btn-name">Github</span>
+              </button>
+            </a>
+          </div>
         </div>
       </div>
     </div>

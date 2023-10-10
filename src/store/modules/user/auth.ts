@@ -29,7 +29,7 @@ export interface AuthStatesIFace {
 }
 
 const userInfoFromStorage = localStorage.getItem("userInfo")
-  ? JSON.parse(localStorage.getItem("userInfo")!)
+  ? JSON.parse(localStorage.getItem("userInfo") || "")
   : {};
 
 const state: AuthStatesIFace = {
@@ -104,13 +104,17 @@ const actions = {
         state.user = data;
         localStorage.setItem("userInfo", JSON.stringify(data));
       }
-    } catch (error: AxiosError | any) {
+    } catch (error) {
       state.isRegLoading = false;
       console.log(error);
-      state.regErrorMsg =
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message;
+      if (error instanceof AxiosError) {
+        state.regErrorMsg =
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message;
+      } else {
+        throw error;
+      }
     }
   },
 
@@ -130,13 +134,17 @@ const actions = {
         state.user = data;
         localStorage.setItem("userInfo", JSON.stringify(data));
       }
-    } catch (error: AxiosError | any) {
+    } catch (error) {
       state.isLoginLoading = false;
       console.log(error);
-      state.loginErrorMsg =
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message;
+      if (error instanceof AxiosError) {
+        state.loginErrorMsg =
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message;
+      } else {
+        throw error;
+      }
     }
   },
 
@@ -154,7 +162,7 @@ const actions = {
         state.isUpdUserSuccess = true;
         commit("SET_UPD_USER_SUCCESS_MSG", data.msg);
       }
-    } catch (error: AxiosError | any) {
+    } catch (error) {
       state.isUpdUserLoading = false;
       console.log(error);
     }
@@ -171,7 +179,7 @@ const actions = {
         state.isDelUserSuccess = true;
         localStorage.removeItem("userInfo");
       }
-    } catch (error: AxiosError | any) {
+    } catch (error) {
       state.isDelUSerLoading = false;
       console.log(error);
     }
@@ -192,7 +200,7 @@ const actions = {
         localStorage.removeItem("userInfo");
         state.user = {};
       }
-    } catch (error: AxiosError | any) {
+    } catch (error) {
       state.isLogoutLoading = false;
       console.log(error);
     }

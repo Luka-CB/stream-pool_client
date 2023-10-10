@@ -50,7 +50,7 @@ export default defineComponent({
 
   .prompt-body {
     background-color: rgb(4, 44, 41);
-    width: 40%;
+    width: 450px;
     border-radius: 20px;
     border: 2px solid rgba(4, 86, 79, 0.559);
     border-top: 6px solid rgba(4, 86, 79, 0.559);
@@ -117,6 +117,55 @@ export default defineComponent({
           background-color: #ffc90873;
           color: rgba(0, 0, 0, 0.5);
           box-shadow: 0 6px 6px -4px black;
+        }
+      }
+    }
+
+    @media (min-width: 1920px) {
+      width: 650px;
+
+      p {
+        font-size: 1.5rem;
+      }
+
+      .btns {
+        button {
+          width: 250px;
+          height: 40px;
+          border-radius: 15px;
+          font-size: 1.3rem;
+        }
+      }
+    }
+
+    @media (max-width: 500px) {
+      width: 95%;
+      min-width: 240px;
+
+      p {
+        font-size: small;
+      }
+
+      .btns {
+        button {
+          width: 150px;
+          height: 20px;
+          border-radius: 5px;
+          font-size: small;
+        }
+
+        @media (max-width: 400px) {
+          justify-content: space-around;
+
+          button {
+            width: 100px;
+          }
+        }
+
+        @media (max-width: 300px) {
+          button {
+            width: 80px;
+          }
         }
       }
     }

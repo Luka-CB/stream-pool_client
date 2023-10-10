@@ -131,6 +131,11 @@ export default defineComponent({
         store.commit("RESET_ADD_CONTENT");
         store.commit("RESET_INFO");
         localStorage.removeItem("contentInfo");
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: "smooth",
+        });
         title.value = "";
         startYear.value = "";
         endYear.value = "";
@@ -143,12 +148,16 @@ export default defineComponent({
       const crewFromStorage = computed(() => store.getters.crew);
 
       const crew = {
-        directors: crewFromStorage.value.directors.map((x: any) => {
-          return { name: x.name };
-        }),
-        cast: crewFromStorage.value.cast.map((x: any) => {
-          return { name: x.name };
-        }),
+        directors: crewFromStorage.value.directors.map(
+          (x: { _id: string; name: string }) => {
+            return { name: x.name };
+          }
+        ),
+        cast: crewFromStorage.value.cast.map(
+          (x: { _id: string; name: string }) => {
+            return { name: x.name };
+          }
+        ),
       };
 
       const genres = computed(() => store.getters.pickedGenres);

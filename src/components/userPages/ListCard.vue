@@ -1,5 +1,8 @@
 <template>
-  <div class="list-card" @click="handleNavigation(list?._id)">
+  <div
+    :class="routeName === 'lists' ? 'list-card' : 'profile-list-card'"
+    @click="handleNavigation(list?._id)"
+  >
     <div class="list-cover">
       <img
         src="@/assets/images/list-img.webp"
@@ -33,14 +36,14 @@
       <div class="row2">
         <div
           class="edit"
-          title="Edit Comment"
+          title="Edit List"
           @click.stop="handleOpenUpdListModal(list?._id, list?.title)"
         >
           <i class="fa-solid fa-pencil"></i>
         </div>
         <div
           class="delete"
-          title="Delete Comment"
+          title="Delete List"
           @click.stop="handleOpenPrompt(list?._id)"
         >
           <spinner-alt
@@ -139,6 +142,7 @@ export default defineComponent({
       handleOpenPrompt,
       listId,
       handleNavigation,
+      routeName,
     };
   },
 });

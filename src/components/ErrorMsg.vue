@@ -25,7 +25,7 @@ export default defineComponent({
 .msg-wrapper {
   background-color: rgb(206, 70, 70);
   width: 40%;
-  min-width: 250px;
+  min-width: 240px;
   position: fixed;
   left: 50%;
   top: 0;
@@ -42,5 +42,11 @@ export default defineComponent({
   font-size: large;
   text-align: center;
   padding: 0 10px;
+  transition: all 0.2s ease;
+
+  @media (min-width: 1920px) {
+    height: 70px;
+    font-size: 1.5rem;
+  }
 }
 </style>

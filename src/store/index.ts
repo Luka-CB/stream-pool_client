@@ -8,7 +8,6 @@ import fetchContent, {
 } from "./modules/content/fetchContent";
 import image, { ImageStatesIFace } from "./modules/image";
 import auth, { AuthStatesIFace } from "./modules/user/auth";
-import sort, { SortIFace } from "./modules/sort";
 import addContent, { AddContentStateIFace } from "./modules/content/addContent";
 import msg, { MsgIFace } from "./modules/msg";
 import genres, { GenresStateIFace } from "./modules/form/genres";
@@ -38,6 +37,7 @@ import search, { SearchStateIFace } from "./modules/search";
 import profileView, {
   ProfileViewStateIFace,
 } from "./modules/profile/profileView";
+import navigation, { NavStatesIFace } from "./modules/navigation";
 
 export interface StateIface {
   fetchContents: ContentsStatesIFace;
@@ -45,7 +45,6 @@ export interface StateIface {
   auth: AuthStatesIFace;
   image: ImageStatesIFace;
   states: StIFace;
-  sort: SortIFace;
   addContent: AddContentStateIFace;
   msg: MsgIFace;
   genres: GenresStateIFace;
@@ -65,6 +64,7 @@ export interface StateIface {
   reply: ReplyStateIFace;
   search: SearchStateIFace;
   profileView: ProfileViewStateIFace;
+  navigation: NavStatesIFace;
 }
 
 export default createStore<StateIface>({
@@ -74,7 +74,6 @@ export default createStore<StateIface>({
     fetchContent,
     image,
     auth,
-    sort,
     addContent,
     msg,
     genres,
@@ -94,5 +93,6 @@ export default createStore<StateIface>({
     reply,
     search,
     profileView,
+    navigation,
   },
 });

@@ -19,7 +19,7 @@
     <hr />
     <div class="logout">
       <spinner-alt color="gray" margin="0" v-if="isLogoutLoading" />
-      <p class="option-value" @click="handleLogout">logout</p>
+      <p @click="handleLogout">logout</p>
     </div>
   </div>
 </template>
@@ -91,7 +91,7 @@ export default defineComponent({
   text-align: center;
   border-radius: 10px;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.529);
-  z-index: 1;
+  z-index: 11;
 
   .option-value {
     padding: 10px;
@@ -110,6 +110,32 @@ export default defineComponent({
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 10px;
+    color: black;
+    font-size: medium;
+    cursor: pointer;
+    text-transform: capitalize;
+
+    p {
+      margin-left: 10px;
+    }
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.108);
+      font-weight: 600;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    width: 200px;
+
+    .option-value {
+      font-size: 1.3rem;
+    }
+
+    .logout {
+      font-size: 1.3rem;
+    }
   }
 }
 </style>

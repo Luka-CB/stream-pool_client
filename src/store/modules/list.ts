@@ -1,8 +1,8 @@
 import { ActionContext } from "vuex";
 import { StateIface } from "..";
 import axios from "@/utils/axios";
-import { AxiosError } from "axios";
 import { formatDistanceToNow } from "date-fns";
+import { AxiosError } from "axios";
 
 interface listsIFace {
   _id: string;
@@ -148,12 +148,8 @@ const mutations = {
   },
 
   RESET_LIST(state: ListIFace) {
-    state.isCreateListLoading = false;
     state.isCreateListSuccess = false;
-    state.isGetListsLoading = false;
-    state.isUpdListLoading = false;
     state.isUpdListSuccess = false;
-    state.isDelListLoading = false;
     state.isDelListSuccess = false;
     state.listErrorMsg = "";
     state.listSuccessMsg = "";
@@ -175,13 +171,17 @@ const actions = {
         state.isCreateListSuccess = true;
         commit("SET_LIST_SUCCESS_MSG", data.msg);
       }
-    } catch (error: AxiosError | any) {
+    } catch (error) {
       state.isCreateListLoading = false;
       console.log(error);
-      state.listErrorMsg =
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message;
+      if (error instanceof AxiosError) {
+        state.listErrorMsg =
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message;
+      } else {
+        throw error;
+      }
     }
   },
 
@@ -251,13 +251,17 @@ const actions = {
         state.isUpdListSuccess = true;
         commit("SET_LIST_SUCCESS_MSG", data.msg);
       }
-    } catch (error: AxiosError | any) {
+    } catch (error) {
       state.isUpdListLoading = false;
       console.log(error);
-      state.listErrorMsg =
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message;
+      if (error instanceof AxiosError) {
+        state.listErrorMsg =
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message;
+      } else {
+        throw error;
+      }
     }
   },
 
@@ -276,13 +280,17 @@ const actions = {
         state.isDelListSuccess = true;
         commit("SET_LIST_SUCCESS_MSG", data.msg);
       }
-    } catch (error: AxiosError | any) {
+    } catch (error) {
       state.isDelListLoading = false;
       console.log(error);
-      state.listErrorMsg =
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message;
+      if (error instanceof AxiosError) {
+        state.listErrorMsg =
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message;
+      } else {
+        throw error;
+      }
     }
   },
 };

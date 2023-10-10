@@ -6,19 +6,33 @@
       >
         <h3 id="card-title">
           {{
-            comment?.contentId?.title?.length <= 25
+            comment?.contentId?.title?.length <= 33
               ? comment?.contentId?.title
-              : `${comment?.contentId?.title?.substring(0, 25)}...`
+              : `${comment?.contentId?.title?.substring(0, 33)}...`
           }}
         </h3>
       </router-link>
     </div>
     <div class="card-body">
-      <p id="body-content">
+      <p id="body-content" v-if="windowWidth >= 1920">
         {{
-          comment?.text?.length <= 750
+          comment?.text?.length <= 800
             ? comment?.text
-            : `${comment?.text?.substring(0, 750)}...`
+            : `${comment?.text?.substring(0, 800)}...`
+        }}
+      </p>
+      <p id="body-content" v-else-if="windowWidth <= 1400">
+        {{
+          comment?.text?.length <= 270
+            ? comment?.text
+            : `${comment?.text?.substring(0, 270)}...`
+        }}
+      </p>
+      <p id="body-content" v-else>
+        {{
+          comment?.text?.length <= 666
+            ? comment?.text
+            : `${comment?.text?.substring(0, 666)}...`
         }}
       </p>
     </div>
@@ -67,6 +81,7 @@
 <script lang="ts">
 import { computed, defineComponent, ref, watchEffect } from "vue";
 import { useStore } from "vuex";
+import { useWindowWidth } from "../../../composables/windowResize";
 import SpinnerAlt from "../../SpinnerAlt.vue";
 
 export default defineComponent({
@@ -80,29 +95,21 @@ export default defineComponent({
     //////// DELETE COMMENT ////////
     const commentId = ref("");
 
-    const promptKeyword = computed(() => store.getters.promptKeyword);
-    const isAnswerYes = computed(() => store.getters.isAnswerYes);
     const isDelCommentLoading = computed(() => store.getters.delCommentLoading);
     const isDelCommentSuccess = computed(() => store.getters.delCommentSuccess);
 
     watchEffect(() => {
       if (isDelCommentSuccess.value) {
-        store.commit("REMOVE_USER_COMMENT_FROM_LIST", commentId.value);
+        store.dispatch("getUserComments");
         store.commit("RESET_COMMENTS");
-        store.commit("RESET_PROMPT");
-      }
-    });
-
-    watchEffect(() => {
-      if (promptKeyword.value === "comCard" && isAnswerYes.value) {
-        store.dispatch("deleteComment", commentId.value);
       }
     });
 
     const handleOpenPrompt = (id: string) => {
       commentId.value = id;
-      store.commit("TOGGLE_PROMPT", true);
-      store.commit("SET_PROMPT_KEYWORD", "comCard");
+      if (confirm("Are you sure!")) {
+        store.dispatch("deleteComment", id);
+      }
     };
 
     ////////////////////////////////////////////
@@ -129,12 +136,15 @@ export default defineComponent({
       store.commit("TOGGLE_USER_COMMENT_REPLIES_MODAL", true);
     };
 
+    const { windowWidth } = useWindowWidth();
+
     return {
       handleOpenRepliesModal,
       handleOpenEditCommentModal,
       handleOpenPrompt,
       isDelCommentLoading,
       commentId,
+      windowWidth,
     };
   },
 });

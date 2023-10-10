@@ -58,6 +58,7 @@
         </div>
         <div
           class="search-result-container"
+          ref="searchResContainer"
           v-if="isListItemSearchResultModalActive"
         >
           <div class="add-listitem-spinner" v-if="isAddListItemLoading">
@@ -132,6 +133,7 @@ import { computed, defineComponent, ref, watchEffect } from "vue";
 import { LocationQueryValue, useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex";
 import SpinnerAlt from "../../SpinnerAlt.vue";
+import { listitemIFace } from "../../../store/modules/listItem";
 
 export default defineComponent({
   name: "ListitemsConfig",
@@ -145,6 +147,7 @@ export default defineComponent({
     const router = useRouter();
 
     const searchQ = ref("");
+    const searchResContainer = ref<HTMLDivElement | null>(null);
 
     const sort = ref<string | LocationQueryValue[]>("asc");
 
@@ -201,6 +204,18 @@ export default defineComponent({
     );
 
     watchEffect(() => {
+      if (isAddListItemLoading.value) {
+        if (searchResContainer.value) {
+          searchResContainer.value.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth",
+          });
+        }
+      }
+    });
+
+    watchEffect(() => {
       if (isAddListItemSuccess.value) {
         window.location.reload();
       }
@@ -208,7 +223,9 @@ export default defineComponent({
 
     const handleAddToList = (contentId: string) => {
       if (
-        listItems.value?.some((listItem: any) => listItem._id === contentId)
+        listItems.value?.some(
+          (listItem: listitemIFace) => listItem._id === contentId
+        )
       ) {
         alert("already in the list");
         return;
@@ -287,6 +304,7 @@ export default defineComponent({
       isGetSearchedListItemsLoading,
       handleAddToList,
       isAddListItemLoading,
+      searchResContainer,
     };
   },
 });

@@ -6,12 +6,12 @@
       :isLoading="isLoading"
       :contentType="contentType"
     />
-    <pagination-vue :data="paginationData" />
+    <pagination-vue :data="paginationData" :contentType="contentType" />
   </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, watchEffect } from "vue";
+import { computed, defineComponent, watchEffect } from "vue";
 import { useStore } from "vuex";
 import TopPanel from "../components/search&sort/TopPanel.vue";
 import MediaContent from "../components/content/index.vue";
@@ -30,11 +30,6 @@ export default defineComponent({
     const paginationData = computed(() => store.getters.tvPagination);
     const isLoading = computed(() => store.getters.tvsLoading);
 
-    const storeGenre = computed(() => store.getters.genre);
-    const storeYear = computed(() => store.getters.year);
-    const storeRatingSort = computed(() => store.getters.ratingSort);
-    const storeDateSort = computed(() => store.getters.dateSort);
-    const storePage = computed(() => store.getters.page);
     const user = computed(() => store.getters.user);
 
     const contentType = computed(() => {
@@ -42,36 +37,22 @@ export default defineComponent({
       return type?.substring(0, type.length - 1);
     });
 
+    const routeQuery = computed(() => route.query);
+
     const data = {
-      genre: storeGenre.value,
-      year: storeYear.value,
-      sort:
-        storeRatingSort.value === "asc"
-          ? "r_asc"
-          : storeRatingSort.value === "desc"
-          ? "r_desc"
-          : storeDateSort.value === "asc"
-          ? "d_asc"
-          : storeDateSort.value === "desc"
-          ? "d_desc"
-          : "",
-      page: storePage.value,
+      genre: routeQuery.value?.genre,
+      year: routeQuery.value?.year,
+      rating: routeQuery.value?.rating,
+      date: routeQuery.value?.date,
+      page: routeQuery.value?.page,
       userId: user.value?.id,
     };
 
     watchEffect(() => {
-      if (
-        storeGenre.value ||
-        storeYear.value ||
-        storeRatingSort.value ||
-        storeDateSort.value ||
-        storePage.value
-      ) {
-        store.dispatch("fetchTvs", {
-          ...data,
-        });
+      if (data.genre || data.year || data.rating || data.date || data.page) {
+        store.dispatch("fetchTvs", data);
       } else {
-        store.dispatch("fetchTvs", {});
+        store.dispatch("fetchTvs", { userId: user.value?.id });
       }
     });
 

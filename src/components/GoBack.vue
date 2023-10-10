@@ -7,15 +7,12 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { useRouter } from "vue-router";
-import { useStore } from "vuex";
 
 export default defineComponent({
   name: "GoBack",
   props: ["route"],
 
   setup(props) {
-    const store = useStore();
-
     const router = useRouter();
 
     const handleGoBack = () => {
@@ -33,10 +30,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .go-back {
-  position: absolute;
-  top: 0;
-  margin-left: 15px;
-  margin-top: 15px;
   border-radius: 50%;
   cursor: pointer;
   transition: all 0.2s ease-in;
@@ -51,6 +44,18 @@ export default defineComponent({
     background-color: aliceblue;
     .fa-circle-left {
       color: #01b6b3;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    .fa-circle-left {
+      font-size: 3.5rem;
+    }
+  }
+
+  @media (max-width: 800px) {
+    .fa-circle-left {
+      font-size: 1.8rem;
     }
   }
 }

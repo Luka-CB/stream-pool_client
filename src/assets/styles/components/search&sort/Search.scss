@@ -2,12 +2,18 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  transition: all 0.2s ease-in-out;
 
   .search-input {
     height: 60px;
     width: 70%;
     z-index: 10;
     position: relative;
+    transition: all 0.2s ease-in-out;
+
+    @media (max-width: 800px) {
+      width: 90%;
+    }
 
     input {
       height: 100%;
@@ -40,6 +46,21 @@
       margin: 0 10px;
       font-size: 1.6rem;
       color: rgb(0, 101, 104);
+      transition: all 0.2s ease-in-out;
+    }
+
+    @media (max-width: 600px) {
+      margin-top: 20px;
+      width: 98%;
+      height: 40px;
+
+      input {
+        font-size: small;
+      }
+
+      .icon {
+        font-size: 1.4rem;
+      }
     }
 
     .search-result-wrapper {
@@ -49,6 +70,7 @@
       border-radius: 15px;
       margin-top: 5px;
       box-shadow: 2px 4px 14px rgba(0, 0, 0, 0.414);
+      transition: all 0.2s ease-in-out;
 
       .search-res-header {
         display: flex;
@@ -56,6 +78,7 @@
         align-items: center;
         border-bottom: 1px solid rgba(128, 128, 128, 0.342);
         padding: 10px 0;
+        transition: all 0.2s ease-in-out;
 
         .fa-circle-xmark {
           position: absolute;
@@ -73,9 +96,11 @@
 
         #title {
           margin: 0 10px;
+          transition: all 0.2s ease-in-out;
 
           em {
             color: gray;
+            transition: all 0.2s ease-in-out;
           }
         }
       }
@@ -83,6 +108,7 @@
       .search-res-body {
         overflow-y: scroll;
         position: relative;
+        transition: all 0.2s ease-in-out;
 
         &::-webkit-scrollbar {
           display: none;
@@ -104,6 +130,7 @@
           text-transform: uppercase;
           letter-spacing: 3px;
           color: $danger;
+          transition: all 0.2s ease-in-out;
         }
 
         .content {
@@ -121,11 +148,13 @@
 
           .col1 {
             padding: 15px;
+            transition: all 0.2s ease-in-out;
 
             img {
               box-shadow: 0 0 5px black;
               width: 105px;
               height: 150px;
+              transition: all 0.2s ease-in-out;
             }
           }
 
@@ -133,22 +162,32 @@
             .row1 {
               display: flex;
               align-items: center;
+              justify-content: space-between;
+              width: 95%;
+              transition: all 0.2s ease-in-out;
 
               #content-title {
                 text-transform: uppercase;
+                width: 80%;
+                color: $primary;
+                transition: all 0.2s ease-in-out;
               }
 
               #content-year {
-                margin-left: 5px;
                 color: gray;
+                width: 150px;
+                text-align: center;
+                transition: all 0.2s ease-in-out;
               }
             }
 
             .row2 {
               margin: 5px 0;
+              transition: all 0.2s ease-in-out;
 
               span {
                 color: rgb(166, 166, 166);
+                transition: all 0.2s ease-in-out;
 
                 &:not(:first-child) {
                   margin-left: 15px;
@@ -157,9 +196,13 @@
             }
 
             .row3 {
+              padding-bottom: 10px;
+              transition: all 0.2s ease-in-out;
+
               p {
                 font-size: small;
                 text-indent: 10px;
+                transition: all 0.2s ease-in-out;
               }
             }
           }
@@ -169,6 +212,7 @@
             flex-direction: column;
             justify-content: space-between;
             align-items: flex-end;
+            transition: all 0.2s ease-in-out;
 
             .rating {
               padding: 0 10px;
@@ -176,10 +220,12 @@
               display: flex;
               align-items: center;
               height: 20px;
+              transition: all 0.2s ease-in-out;
 
               .fa-star {
                 color: $warning;
                 font-size: large;
+                transition: all 0.2s ease-in-out;
               }
 
               #rating-num {
@@ -187,10 +233,12 @@
                   "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana,
                   sans-serif;
                 margin-left: 5px;
+                transition: all 0.2s ease-in-out;
 
                 em {
                   color: gray;
                   font-size: small;
+                  transition: all 0.2s ease-in-out;
                 }
               }
             }
@@ -207,6 +255,261 @@
               text-transform: capitalize;
               border-top-left-radius: 20px;
               border-top: 3px solid rgb(0, 119, 111);
+              transition: all 0.2s ease-in-out;
+            }
+          }
+        }
+      }
+    }
+
+    @media (min-width: 1920px) {
+      height: 80px;
+
+      input {
+        border-radius: 20px;
+        font-size: 1.5rem;
+      }
+
+      .icon {
+        margin: 0 15px;
+        font-size: 2.2rem;
+      }
+
+      .search-result-wrapper {
+        .search-res-header {
+          padding: 15px 0;
+
+          .fa-circle-xmark {
+            font-size: 2rem;
+          }
+
+          #title {
+            font-size: 1.3rem;
+
+            em {
+              color: gray;
+              font-size: 1.2rem;
+            }
+          }
+        }
+
+        .search-res-body {
+          #err-text {
+            font-size: 1.5rem;
+          }
+
+          .content {
+            .col1 {
+              img {
+                width: 140px;
+                height: 200px;
+              }
+            }
+
+            .col2 {
+              .row1 {
+                #content-title {
+                  font-size: 1.2rem;
+                }
+
+                #content-year {
+                  font-size: 1.1rem;
+                }
+              }
+
+              .row2 {
+                span {
+                  font-size: 1.1rem;
+                }
+              }
+
+              .row3 {
+                margin-top: 10px;
+
+                p {
+                  font-size: 0.9rem;
+                }
+              }
+            }
+
+            .col3 {
+              .rating {
+                height: 40px;
+
+                .fa-star {
+                  font-size: 1.5rem;
+                }
+
+                #rating-num {
+                  font-size: 0.9rem;
+
+                  em {
+                    font-size: 1rem;
+                  }
+                }
+              }
+
+              .type {
+                width: 100px;
+                font-size: 1.1rem;
+                height: 30px;
+                border-top-left-radius: 30px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    @media (max-width: 1000px) {
+      .search-result-wrapper {
+        .search-res-header {
+          .fa-circle-xmark {
+            font-size: 1.3rem;
+          }
+
+          #title {
+            font-size: small;
+          }
+        }
+
+        .search-res-body {
+          #err-text {
+            font-size: small;
+          }
+
+          .content {
+            .col1 {
+              img {
+                width: 70px;
+                height: 100px;
+              }
+            }
+
+            .col2 {
+              .row1 {
+                #content-title {
+                  font-size: 0.8rem;
+                }
+
+                #content-year {
+                  width: 80px;
+                  font-size: 0.7rem;
+                }
+              }
+
+              .row2 {
+                span {
+                  font-size: 0.7rem;
+                }
+              }
+
+              .row3 {
+                margin-top: 5px;
+
+                p {
+                  font-size: 0.6rem;
+                }
+              }
+            }
+
+            .col3 {
+              .rating {
+                height: 20px;
+
+                .fa-star {
+                  font-size: 0.9rem;
+                }
+
+                #rating-num {
+                  font-size: 0.7rem;
+
+                  em {
+                    font-size: 0.8rem;
+                  }
+                }
+              }
+
+              .type {
+                width: 60px;
+                font-size: 0.7rem;
+                height: 20px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    @media (max-width: 500px) {
+      .search-result-wrapper {
+        .search-res-body {
+          .content {
+            flex-direction: column;
+            padding: 0;
+
+            .col1 {
+              margin-top: 10px;
+              display: flex;
+              justify-content: center;
+
+              img {
+                width: 105px;
+                height: 150px;
+              }
+            }
+
+            .col2 {
+              .row1 {
+                flex-direction: column;
+                justify-content: space-between;
+                width: 100%;
+                padding: 0 10px;
+
+                #content-title {
+                  width: auto;
+                  text-align: center;
+                  font-size: 0.7rem;
+                }
+
+                #content-year {
+                  width: auto;
+                  margin-top: 5px;
+                  font-size: 0.6rem;
+                }
+              }
+
+              .row2 {
+                display: flex;
+                justify-content: center;
+
+                span {
+                  font-size: 0.6rem;
+                }
+              }
+
+              .row3 {
+                p {
+                  font-size: 0.6rem;
+                  text-align: center;
+                }
+              }
+            }
+
+            .col3 {
+              order: -1;
+              flex-direction: row;
+
+              .rating {
+                margin-left: 0;
+              }
+
+              .type {
+                border-radius: unset;
+                border-bottom-left-radius: 20px;
+                border-top: unset;
+                border-bottom: 3px solid rgb(0, 119, 111);
+              }
             }
           }
         }

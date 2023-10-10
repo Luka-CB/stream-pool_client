@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, watchEffect } from "vue";
+import { computed, defineComponent, ref } from "vue";
 import { useStore } from "vuex";
 import SpinnerAlt from "../../SpinnerAlt.vue";
 

@@ -1,0 +1,280 @@
+$mobContentCardHeight: 350px;
+$mobContentCardImgHeight: 230px;
+
+.card-mobile {
+  width: 160px;
+  height: $mobContentCardHeight;
+  position: relative;
+  cursor: pointer;
+  background-color: rgb(4, 44, 41);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.838);
+  transition: all 0.2s ease-in-out;
+
+  .pulsing-img,
+  .image {
+    width: 100%;
+    height: $mobContentCardImgHeight;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .pulsing-img {
+    background-image: url("@/assets/images/movie-poster-placeholder.png");
+    background-position: center;
+    background-size: cover;
+    position: relative;
+
+    &::before {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background-color: rgba(240, 248, 255, 0.4);
+      animation: pulsing 2s ease-in-out infinite;
+    }
+  }
+
+  .action-btns {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+    .list,
+    .list-disabled {
+      background-color: rgba(44, 44, 44, 0.664);
+      width: 40px;
+      height: 40px;
+      border-bottom-right-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.1s ease;
+      cursor: pointer;
+
+      .add-icon {
+        color: aliceblue;
+        font-size: 1.5rem;
+        transition: all 0.1s ease;
+      }
+
+      &:hover {
+        .add-icon {
+          font-size: 1.6rem;
+        }
+      }
+    }
+
+    .list-disabled {
+      background-color: rgba(167, 167, 167, 0.121);
+
+      .add-icon {
+        cursor: default;
+        color: rgb(203, 201, 201);
+      }
+
+      &:hover {
+        background-color: rgba(167, 167, 167, 0.121);
+      }
+    }
+
+    .favorite-disabled,
+    .favorite,
+    .favorite-active {
+      background-color: rgba(44, 44, 44, 0.664);
+      width: 40px;
+      height: 40px;
+      border-bottom-left-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.1s ease;
+
+      .fav-icon,
+      .fav-icon-active {
+        font-size: 1.5rem;
+        transition: all 0.1s ease;
+        cursor: pointer;
+      }
+
+      &:hover {
+        .fav-icon,
+        .fav-icon-active {
+          font-size: 1.6rem;
+        }
+      }
+    }
+
+    .favorite-active {
+      .fav-icon-active {
+        color: $primary;
+      }
+
+      &:hover {
+        background-color: rgba(0, 255, 255, 0.133);
+      }
+    }
+
+    .favorite-disabled {
+      background-color: rgba(167, 167, 167, 0.121);
+
+      .fav-icon {
+        cursor: default;
+        color: rgba(128, 128, 128, 0.236);
+      }
+
+      &:hover {
+        background-color: rgba(167, 167, 167, 0.121);
+      }
+    }
+  }
+
+  .content-info {
+    height: calc($mobContentCardHeight - $mobContentCardImgHeight);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    .info {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      #title {
+        text-align: center;
+        font-size: 0.7rem;
+        margin-top: 10px;
+        padding: 0 5px;
+        text-transform: capitalize;
+      }
+
+      #year {
+        margin-top: 5px;
+        color: $primary;
+      }
+    }
+
+    .ratings-wrapper {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin-top: 15px;
+      width: 100%;
+
+      .avg-rating {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: default;
+        font-family: "Courier New", Courier, monospace;
+
+        .solid-star-icon {
+          font-size: 1rem;
+          color: $warning;
+        }
+
+        #no-rating {
+          font-weight: 700;
+          font-size: 0.7rem;
+          color: gray;
+          margin-left: 5px;
+        }
+
+        #rating {
+          font-weight: 700;
+          font-size: 0.7rem;
+          margin-left: 5px;
+
+          span {
+            color: gray;
+            font-size: small;
+          }
+        }
+      }
+
+      .user-rating {
+        transition: all 0.2s ease-in-out;
+
+        .rated {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .solid-star-icon {
+            font-size: 1rem;
+            color: $primary;
+          }
+
+          #rating {
+            font-weight: 700;
+            font-size: 0.7rem;
+            margin-left: 5px;
+
+            span {
+              color: gray;
+              font-size: small;
+            }
+          }
+        }
+
+        .empty-star-icon {
+          font-size: 1rem;
+          color: $primary;
+        }
+
+        .empty-star-icon-disabled {
+          font-size: 1rem;
+          color: rgb(93, 102, 116);
+        }
+
+        &:hover {
+          .rated {
+            .solid-star-icon {
+              color: $primary-hover;
+            }
+          }
+
+          .empty-star-icon {
+            color: $primary-hover;
+          }
+        }
+      }
+    }
+  }
+
+  &:hover {
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.499);
+  }
+
+  @media (max-width: 355px) {
+    width: 240px;
+    height: 450px;
+
+    .pulsing-img,
+    .image {
+      width: 100%;
+      height: 330px;
+    }
+
+    .content-info {
+      height: calc(450px - 330px);
+
+      .info {
+        #title {
+          font-size: 0.8rem;
+        }
+      }
+
+      .ratings-wrapper {
+        margin-top: 5px;
+      }
+    }
+  }
+}

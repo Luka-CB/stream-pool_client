@@ -15,11 +15,7 @@
           Duis dolor sem, placerat vitae dapibus volutpat, vehicula sed nisi.
           Suspendisse ut diam imperdiet, porta mi eget, dictum augue. Quisque
           sit amet tincidunt orci, at sodales augue. Pellentesque pulvinar
-          semper feugiat. Nullam viverra dignissim neque. Proin varius diam ut
-          turpis luctus aliquet. Sed rutrum ligula et velit molestie congue.
-          Pellentesque habitant morbi tristique senectus et netus et malesuada
-          fames ac turpis egestas. Vestibulum eleifend, erat at pharetra cursus,
-          sem leo mollis nunc, a iaculis massa libero a elit.
+          semper feugiat.
         </p>
       </div>
     </Transition>

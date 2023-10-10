@@ -1,8 +1,14 @@
 <template>
   <div class="profile-container">
-    <go-back :route="prevRoute" />
-    <div class="home-icon" title="Back to home page" @click="handleNavigation">
-      <i class="fa-solid fa-house-chimney-window"></i>
+    <div class="icon-btns">
+      <go-back :route="prevRoute" />
+      <div
+        class="home-icon"
+        title="Back to home page"
+        @click="handleNavigation"
+      >
+        <i class="fa-solid fa-house-chimney-window"></i>
+      </div>
     </div>
 
     <user-info />

@@ -45,7 +45,7 @@ import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex";
 
 export default defineComponent({
-  name: "ProfileNav",
+  name: "ProfileNavItems",
 
   setup() {
     const store = useStore();
@@ -57,6 +57,10 @@ export default defineComponent({
     const routeName = computed(() => route.name);
 
     const handleNavigation = (linkName: string) => {
+      if (linkName === routeName.value) {
+        return;
+      }
+
       const param =
         linkName === "account"
           ? { username: user.value?.username }
@@ -78,6 +82,8 @@ export default defineComponent({
         name: currentRouteName.value,
         params: prevRouteParams,
       });
+
+      store.commit("TOGGLE_PROFILE_MOBILE_NAV", false);
     };
 
     return {

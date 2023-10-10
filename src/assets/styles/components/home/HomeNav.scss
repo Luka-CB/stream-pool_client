@@ -7,6 +7,16 @@
   position: fixed;
   z-index: 1;
 
+  @media (max-width: 600px) {
+    background-image: url("@/assets/images/landing-img.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    z-index: 100;
+    border-bottom: 3px solid rgba(173, 173, 173, 0.478);
+    box-shadow: 0 12px 12px -4px black;
+  }
+
   .page-links {
     .link {
       color: aliceblue;
@@ -15,6 +25,13 @@
 
       &:hover {
         color: $primary-hover;
+      }
+    }
+
+    @media (min-width: 1920px) {
+      .link {
+        margin-left: 60px;
+        font-size: 1.4rem;
       }
     }
   }
@@ -107,6 +124,55 @@
 
         span {
           color: $lighter;
+        }
+      }
+    }
+
+    @media (min-width: 1920px) {
+      margin: 20px;
+
+      .signed {
+        #username {
+          font-size: 1.1rem;
+        }
+
+        .box {
+          width: 130px;
+          height: 50px;
+
+          .user-icon {
+            font-size: 2.3rem;
+            transition: all 0.1s ease-in-out;
+          }
+
+          .divider {
+            background-color: rgba(255, 255, 255, 0.41);
+          }
+
+          .caret-icon {
+            font-size: 1.5rem;
+          }
+
+          &:hover {
+            .user-icon {
+              font-size: 2.2rem;
+            }
+          }
+        }
+      }
+
+      .sign-in {
+        width: 130px;
+        height: 50px;
+
+        span {
+          font-size: 1.3rem;
+        }
+
+        &:hover {
+          span {
+            font-size: 1.2rem;
+          }
         }
       }
     }

@@ -29,7 +29,17 @@
         </div>
         <div class="img-info">
           <div class="col1">
-            <h5 id="name">{{ imageFile.name }}</h5>
+            <h5
+              id="name"
+              :title="imageFile.name?.length > 26 ? imageFile.name : undefined"
+              v-if="imageFile.name"
+            >
+              {{
+                imageFile.name?.length <= 26
+                  ? imageFile.name
+                  : imageFile.name?.substring(0, 26) + "..."
+              }}
+            </h5>
             <em id="size">{{ imageFile.size }}</em>
           </div>
           <div class="col2">
@@ -64,6 +74,7 @@ import { computed, defineComponent, watchEffect } from "vue";
 import { useStore } from "vuex";
 import { partial } from "filesize";
 import SpinnerVue from "../Spinner.vue";
+import { useWindowWidth } from "../../composables/windowResize";
 
 const size = partial({ base: 2, standard: "jedec" });
 
@@ -123,12 +134,15 @@ export default defineComponent({
         image: imageFile.value.image,
       });
 
+    const { windowWidth } = useWindowWidth();
+
     return {
       handleInputFile,
       imageFile,
       handleCloseModal,
       isLoading,
       handleUpload,
+      windowWidth,
     };
   },
 });

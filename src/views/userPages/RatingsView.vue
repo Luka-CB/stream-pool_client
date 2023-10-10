@@ -1,12 +1,16 @@
 <template>
   <div class="ratings-container">
-    <go-back :route="prevRoute" />
-    <div class="home-icon" title="Back to home page" @click="handleNavigation">
-      <i class="fa-solid fa-house-chimney-window"></i>
+    <div class="icon-btns">
+      <go-back :route="prevRoute" />
+      <div
+        class="home-icon"
+        title="Back to home page"
+        @click="handleNavigation"
+      >
+        <i class="fa-solid fa-house-chimney-window"></i>
+      </div>
     </div>
-    <div class="nav-wrapper">
-      <profile-nav />
-    </div>
+    <profile-nav />
     <div class="rated-contents-wrapper">
       <div class="spinner" v-if="isGetRatedContentLoading">
         <spinner-vue :height="4" :width="4" />
@@ -34,7 +38,7 @@ import RatedContentCard from "../../components/userPages/ratingsView/RCCard.vue"
 import RatedContentConfig from "../../components/userPages/ratingsView/RatedContentConfig.vue";
 import { useStore } from "vuex";
 import SpinnerVue from "../../components/Spinner.vue";
-import ProfileNav from "../../components/userPages/ProfileNav.vue";
+import ProfileNav from "../../components/navigation/ProfileNav.vue";
 
 export default defineComponent({
   components: {

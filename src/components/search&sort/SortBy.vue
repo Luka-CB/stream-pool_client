@@ -92,7 +92,7 @@ export default defineComponent({
   name: "SortBy",
   props: ["contentType"],
 
-  setup() {
+  setup(props) {
     const store = useStore();
     const router = useRouter();
     const route = useRoute();
@@ -110,22 +110,32 @@ export default defineComponent({
       return Array.from({ length }, (_, i) => start + i);
     };
 
+    const routeName = props.contentType === "tv" ? "fetchTvs" : "fetchMovies";
+
     const handleSelectedYear = (e: Event) => {
       const target = e.target as HTMLSelectElement;
       router.push({
         name: route.name || "",
-        query: { ...route.query, year: target.value },
+        query: { ...route.query, year: target.value, page: 1 },
       });
-      store.dispatch("fetchMovies", { ...route.query, year: target.value });
+      store.dispatch(routeName, {
+        ...route.query,
+        year: target.value,
+        page: 1,
+      });
     };
 
     const handleSelectedGenre = (e: Event) => {
       const target = e.target as HTMLSelectElement;
       router.push({
         name: route.name || "",
-        query: { ...route.query, genre: target.value },
+        query: { ...route.query, genre: target.value, page: 1 },
       });
-      store.dispatch("fetchMovies", { ...route.query, genre: target.value });
+      store.dispatch(routeName, {
+        ...route.query,
+        genre: target.value,
+        page: 1,
+      });
     };
 
     const handleRatingSort = () => {
@@ -143,7 +153,7 @@ export default defineComponent({
         name: route.name || "",
         query: { ...route.query, rating: ratingSort.value, byYear: "" },
       });
-      store.dispatch("fetchMovies", {
+      store.dispatch(routeName, {
         ...route.query,
         rating: ratingSort.value,
         byYear: "",
@@ -165,7 +175,7 @@ export default defineComponent({
         name: route.name || "",
         query: { ...route.query, rating: "", byYear: byYearSort.value },
       });
-      store.dispatch("fetchMovies", {
+      store.dispatch(routeName, {
         ...route.query,
         rating: "",
         byYear: byYearSort.value,

@@ -1,23 +1,27 @@
 form {
-  width: 80%;
+  width: 90%;
   margin: auto;
   display: flex;
   flex-direction: column;
+  transition: all 0.2s ease-in-out;
 
   .col1 {
     display: flex;
     width: 100%;
     justify-content: space-between;
+    transition: all 0.2s ease-in-out;
 
     .input-box,
     .input-box-tv {
       display: flex;
       flex-direction: column;
       width: 30%;
+      transition: all 0.2s ease-in-out;
     }
 
     .input-box-tv {
-      width: 20%;
+      width: 23%;
+      transition: all 0.2s ease-in-out;
     }
   }
 
@@ -27,6 +31,7 @@ form {
     width: 80%;
     margin: auto;
     margin-top: 50px;
+    transition: all 0.2s ease-in-out;
 
     textarea {
       border: none;
@@ -51,11 +56,45 @@ form {
 
   .col3 {
     margin-top: 50px;
+    transition: all 0.2s ease-in-out;
   }
 
   .btn-outline {
     margin-top: 50px;
     width: 250px;
     align-self: center;
+
+    @media (max-width: 500px) {
+      width: 100%;
+      height: 30px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    width: 100%;
+    padding: 0 10px;
+
+    .col1 {
+      flex-direction: column;
+
+      .input-box,
+      .input-box-tv {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        &:not(:first-child) {
+          margin-top: 20px;
+        }
+      }
+
+      .input-box-tv {
+        width: 100%;
+      }
+    }
+
+    .col2 {
+      width: 100%;
+    }
   }
 }

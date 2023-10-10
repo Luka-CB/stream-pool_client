@@ -17,7 +17,8 @@
             <h2 id="title">{{ content?.title }}</h2>
           </router-link>
           <em id="year"
-            >({{
+            >(
+            {{
               content?.type === "tv"
                 ? `${content?.startYear} - ${content?.endYear}`
                 : content?.startYear

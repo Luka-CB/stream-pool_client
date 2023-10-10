@@ -21,7 +21,12 @@ import { useStore } from "vuex";
 
 export default defineComponent({
   name: "HomeView",
-  components: { HomeNav, HomeLanding, SearchBar, HomeContent },
+  components: {
+    HomeNav,
+    HomeLanding,
+    SearchBar,
+    HomeContent,
+  },
   setup() {
     const store = useStore();
 
@@ -63,6 +68,17 @@ export default defineComponent({
 
     .search {
       height: 150px;
+    }
+
+    @media (max-width: 600px) {
+      height: 100%;
+      overflow: initial;
+
+      .search {
+        height: 200px;
+        display: flex;
+        align-items: flex-end;
+      }
     }
   }
 }

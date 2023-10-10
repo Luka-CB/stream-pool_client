@@ -3,11 +3,10 @@
     <error-msg v-if="isErrMsgActive" />
     <success-msg v-if="isSuccessMsgActive" />
     <main-navigation
-      :nav-mode="navView"
       :home-page="isHomePage"
       v-if="excludeRoute !== routeName"
     />
-    <!-- <mobile-navigation :mobile-mode="mobView" /> -->
+    <mobile-navigation v-if="isMobileNavActive" />
     <router-view />
 
     <rating-modal v-if="isRatingModalActive" />
@@ -25,15 +24,10 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { ref } from "@vue/reactivity";
-import {
-  computed,
-  onMounted,
-  onUnmounted,
-  watchEffect,
-} from "@vue/runtime-core";
+import { computed, watchEffect } from "@vue/runtime-core";
 import { useRoute } from "vue-router";
 import MainNavigation from "./components/navigation/MainNavigation.vue";
-// import MobileNavigation from "./components/navigation/MobileNavigation.vue";
+import MobileNavigation from "./components/navigation/MobileNavigation.vue";
 import { useStore } from "vuex";
 import ErrorMsg from "./components/ErrorMsg.vue";
 import SuccessMsg from "./components/SuccessMsg.vue";
@@ -46,12 +40,13 @@ import UserCommentReplies from "./components/userPages/UserCommentReplies.vue";
 import CreateListModal from "./components/userPages/CreateListModal.vue";
 import UpdateListModal from "./components/userPages/UpdateListModal.vue";
 import PromptModal from "./components/PromptModal.vue";
+import { useWindowWidth } from "./composables/windowResize";
 
 export default defineComponent({
   name: "App",
   components: {
     MainNavigation,
-    // MobileNavigation,
+    MobileNavigation,
     ErrorMsg,
     SuccessMsg,
     RatingModal,
@@ -66,10 +61,7 @@ export default defineComponent({
   },
 
   setup() {
-    const mobView = ref(false);
-    const navView = ref(false);
     const isHomePage = ref(false);
-    const windowWidth = ref(window.innerWidth);
 
     const route = useRoute();
     const store = useStore();
@@ -93,6 +85,10 @@ export default defineComponent({
     );
     const isUpdListModalActive = computed(() => store.getters.updListModal);
     const isPromptOpen = computed(() => store.getters.isPromptOpen);
+    const isMobileNavActive = computed(() => store.getters.mobileNav);
+    const isMobileProfileNavActive = computed(
+      () => store.getters.profileMobileNav
+    );
 
     watchEffect(() => {
       if (isErrMsgActive.value) {
@@ -116,7 +112,9 @@ export default defineComponent({
         isUserCommentRepliesModalActive.value ||
         isCreateListModalActive.value ||
         isUpdListModalActive.value ||
-        isPromptOpen.value
+        isPromptOpen.value ||
+        isMobileNavActive.value ||
+        isMobileProfileNavActive.value
       ) {
         document.body.style.overflow = "hidden";
       } else {
@@ -126,21 +124,6 @@ export default defineComponent({
 
     const routeName = computed(() => route.name);
     const excludeRoute = computed(() => store.getters.excludeRoute);
-
-    const onWidthChange = () => (windowWidth.value = window.innerWidth);
-
-    onMounted(() => window.addEventListener("resize", onWidthChange));
-    onUnmounted(() => window.addEventListener("resize", onWidthChange));
-
-    watchEffect(() => {
-      if (windowWidth.value <= 1000) {
-        mobView.value = true;
-        navView.value = false;
-      } else {
-        navView.value = true;
-        mobView.value = false;
-      }
-    });
 
     watchEffect(() => {
       if (route.name === "home") {
@@ -156,9 +139,27 @@ export default defineComponent({
       store.commit("TOGGLE_LISTITEM_SEARCH_RESULT_MODAL", false);
     };
 
+    const { windowWidth } = useWindowWidth();
+
+    watchEffect(() => {
+      if (route.name !== "home" && windowWidth.value <= 900) {
+        store.commit("TOGGLE_NAV_MENU_ICON", true);
+      } else {
+        store.commit("TOGGLE_NAV_MENU_ICON", false);
+        store.commit("TOGGLE_MOBILE_NAV", false);
+      }
+    });
+
+    watchEffect(() => {
+      if (route.name === "home" && windowWidth.value <= 600) {
+        store.commit("TOGGLE_NAV_MENU_ICON", true);
+      } else {
+        store.commit("TOGGLE_NAV_MENU_ICON", false);
+        store.commit("TOGGLE_MOBILE_NAV", false);
+      }
+    });
+
     return {
-      mobView,
-      navView,
       isHomePage,
       handleCloseModals,
       excludeRoute,
@@ -174,6 +175,7 @@ export default defineComponent({
       isCreateListModalActive,
       isUpdListModalActive,
       isPromptOpen,
+      isMobileNavActive,
     };
   },
 });

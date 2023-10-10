@@ -1,8 +1,14 @@
 <template>
   <div class="update-container">
-    <go-back />
-    <div class="home" title="Back to home page" @click="handleNavigation">
-      <i class="fa-solid fa-house-chimney-window"></i>
+    <div class="icon-btns">
+      <go-back />
+      <div
+        class="home-icon"
+        title="Back to home page"
+        @click="handleNavigation"
+      >
+        <i class="fa-solid fa-house-chimney-window"></i>
+      </div>
     </div>
     <div class="spinner" v-if="isUpdateContentLoading">
       <spinner-vue :width="6" :height="6" />
@@ -73,35 +79,7 @@ export default defineComponent({
   padding: 50px 0;
   margin-top: 20px;
   position: relative;
-
-  .home {
-    position: absolute;
-    top: 0;
-    left: 5%;
-    margin-top: 5px;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.1s ease-in-out;
-    cursor: pointer;
-
-    .fa-house-chimney-window {
-      color: #018d8a;
-      font-size: 2rem;
-      transition: 0.2s ease-in-out;
-    }
-
-    &:hover {
-      background: #01555489;
-
-      .fa-house-chimney-window {
-        color: #01cbc7;
-      }
-    }
-  }
+  transition: all 0.2s ease-in-out;
 
   .spinner {
     position: fixed;

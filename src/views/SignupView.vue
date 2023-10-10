@@ -1,6 +1,8 @@
 <template>
   <div class="auth-container">
-    <go-back />
+    <div class="back-btn">
+      <go-back />
+    </div>
     <div class="spinner" v-if="isLoading">
       <spinner-vue width="5" height="5" />
     </div>

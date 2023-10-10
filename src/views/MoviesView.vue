@@ -6,12 +6,12 @@
       :isLoading="isLoading"
       :contentType="contentType"
     />
-    <pagination-vue :data="paginationData" />
+    <pagination-vue :data="paginationData" :contentType="contentType" />
   </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, watchEffect } from "vue";
+import { computed, defineComponent, watchEffect } from "vue";
 import TopPanel from "../components/search&sort/TopPanel.vue";
 import { useStore } from "vuex";
 import MediaContent from "../components/content/index.vue";

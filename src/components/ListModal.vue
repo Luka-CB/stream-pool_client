@@ -4,7 +4,41 @@
       <i class="fa-solid fa-circle-xmark" @click="handleCloseListModal"></i>
       <div class="header">
         <h3>
-          add " <span>{{ listModalData.title }}</span> " to the list
+          add "
+          <span
+            :title="
+              listModalData.title?.length > 65 ? listModalData.title : undefined
+            "
+            v-if="windowWidth >= 1920"
+            >{{
+              listModalData.title?.length < 65
+                ? listModalData.title
+                : listModalData.title?.substring(0, 65) + "..."
+            }}</span
+          >
+          <span
+            :title="
+              listModalData.title?.length > 30 ? listModalData.title : undefined
+            "
+            v-else-if="windowWidth > 450 && windowWidth < 1920"
+            >{{
+              listModalData.title?.length < 30
+                ? listModalData.title
+                : listModalData.title?.substring(0, 30) + "..."
+            }}</span
+          >
+          <span
+            :title="
+              listModalData.title?.length > 12 ? listModalData.title : undefined
+            "
+            v-else
+            >{{
+              listModalData.title?.length < 12
+                ? listModalData.title
+                : listModalData.title?.substring(0, 12) + "..."
+            }}</span
+          >
+          " to the list
         </h3>
       </div>
       <div class="body">
@@ -42,9 +76,60 @@
                 <i class="fa-regular fa-folder" v-else></i>
               </div>
             </div>
-            <h3 id="list-name">{{ list.title }}</h3>
+            <h3
+              id="list-name"
+              :title="list.title?.length > 40 ? list.title : undefined"
+              v-if="windowWidth <= 900 && windowWidth > 800"
+            >
+              {{
+                list.title?.length < 40
+                  ? list.title
+                  : list.title?.substring(0, 40) + "..."
+              }}
+            </h3>
+            <h3
+              id="list-name"
+              :title="list.title?.length > 30 ? list.title : undefined"
+              v-else-if="windowWidth <= 800 && windowWidth > 700"
+            >
+              {{
+                list.title?.length < 30
+                  ? list.title
+                  : list.title?.substring(0, 30) + "..."
+              }}
+            </h3>
+            <h3
+              id="list-name"
+              :title="list.title?.length > 20 ? list.title : undefined"
+              v-else-if="windowWidth <= 700 && windowWidth > 550"
+            >
+              {{
+                list.title?.length < 20
+                  ? list.title
+                  : list.title?.substring(0, 20) + "..."
+              }}
+            </h3>
+            <h3
+              id="list-name"
+              :title="list.title?.length > 12 ? list.title : undefined"
+              v-else-if="windowWidth <= 550"
+            >
+              {{
+                list.title?.length < 12
+                  ? list.title
+                  : list.title?.substring(0, 12) + "..."
+              }}
+            </h3>
+            <h3 id="list-name" v-else>{{ list.title }}</h3>
           </div>
           <div class="col2">
+            <div
+              class="open-list"
+              title="Click to view list!"
+              @click.stop="handleViewList(list?._id)"
+            >
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </div>
             <div
               class="edit"
               title="Edit List"
@@ -75,21 +160,23 @@
             v-model="editListName"
             @keyup.enter="handleEditList"
           />
-          <button
-            class="btn-outline upd-btn"
-            @click="handleEditList"
-            :disabled="isUpdListLoading"
-          >
-            <spinner-alt v-if="isUpdListLoading" :size="22" color="#edc531" />
-            <span>{{ isUpdListLoading ? "updating..." : "update" }}</span>
-          </button>
-          <button
-            class="btn-outline cancel-btn"
-            @click="handleCancelEditState"
-            :disabled="isUpdListLoading"
-          >
-            cancel
-          </button>
+          <div class="btns">
+            <button
+              class="btn-outline upd-btn"
+              @click="handleEditList"
+              :disabled="isUpdListLoading"
+            >
+              <spinner-alt v-if="isUpdListLoading" :size="22" color="#edc531" />
+              <span>{{ isUpdListLoading ? "updating..." : "update" }}</span>
+            </button>
+            <button
+              class="btn-outline cancel-btn"
+              @click="handleCancelEditState"
+              :disabled="isUpdListLoading"
+            >
+              cancel
+            </button>
+          </div>
         </div>
         <div class="create-list" v-else>
           <input
@@ -121,6 +208,8 @@ import { computed, defineComponent, ref, watchEffect } from "vue";
 import { useStore } from "vuex";
 import SpinnerAlt from "./SpinnerAlt.vue";
 import SpinnerVue from "./Spinner.vue";
+import { useRouter } from "vue-router";
+import { useWindowWidth } from "../composables/windowResize";
 
 export default defineComponent({
   name: "ListModal",
@@ -128,6 +217,7 @@ export default defineComponent({
 
   setup() {
     const store = useStore();
+    const router = useRouter();
 
     const listName = ref("");
 
@@ -278,6 +368,13 @@ export default defineComponent({
       store.commit("RESET_PROMPT");
     };
 
+    const handleViewList = (listId: string) => {
+      router.push({ name: "listitems", params: { listId } });
+      handleCloseListModal();
+    };
+
+    const { windowWidth } = useWindowWidth();
+
     return {
       listName,
       handleAddList,
@@ -300,6 +397,8 @@ export default defineComponent({
       handleDeleteList,
       isDelListLoading,
       listId,
+      handleViewList,
+      windowWidth,
     };
   },
 });

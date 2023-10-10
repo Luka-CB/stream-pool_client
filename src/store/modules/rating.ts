@@ -36,7 +36,7 @@ export interface RatingStateIFace {
     title: string;
     route?: { name: string; param: string | object };
   };
-  userRating: { _id: string; rateNum: number | null };
+  userRating: { _id?: string; rateNum: number | null };
   ratedContent: ratedContentIFace[];
   ratedContentCount: number | null;
   isCreateRatingLoading: boolean;

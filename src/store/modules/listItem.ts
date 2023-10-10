@@ -3,7 +3,7 @@ import { StateIface } from "..";
 import axios from "@/utils/axios";
 import { format } from "date-fns";
 
-interface listitemIFace {
+export interface listitemIFace {
   _id: string;
   title: string;
   startYear: string;

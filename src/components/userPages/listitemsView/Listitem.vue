@@ -112,6 +112,7 @@
       <div class="row7">
         <div class="fav-icon" @click="handleFavIcon(listItem?._id)">
           <i
+            title="Add to Favorite!"
             :class="[
               'fa-regular',
               'fav-icon',
@@ -123,7 +124,7 @@
           ></i>
           <i
             v-else
-            title="Click to remove from the list"
+            title="Click to remove from the favorite!"
             :class="[
               'fa-solid',
               isAddToFavLoading && listItemId === listItem?._id

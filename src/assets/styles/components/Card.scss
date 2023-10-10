@@ -235,10 +235,14 @@
 
       #title {
         text-align: center;
+        color: rgba(240, 248, 255, 0.679);
+        font-size: small;
+        text-transform: capitalize;
       }
 
       #year {
         margin-top: 10px;
+        color: $primary;
       }
     }
 
@@ -290,6 +294,108 @@
         opacity: 1;
         transition: all 0.2s ease-in;
         top: 0;
+      }
+    }
+  }
+
+  @media (min-width: 1920px) {
+    width: 350px;
+    height: 500px;
+
+    .content-info {
+      .row1 {
+        .list,
+        .list-disabled {
+          height: 70px;
+
+          .add-icon {
+            font-size: 2.8rem;
+          }
+        }
+
+        .favorite-disabled,
+        .favorite,
+        .favorite-active {
+          height: 70px;
+
+          .fav-icon,
+          .fav-icon-active {
+            font-size: 2.5rem;
+          }
+        }
+      }
+
+      .row2 {
+        .avg-rating {
+          .solid-star-icon {
+            font-size: 2.8rem;
+          }
+
+          #no-rating {
+            margin-top: 10px;
+            font-size: 1.5rem;
+          }
+
+          #rating {
+            margin-top: 10px;
+            font-size: 1.5rem;
+
+            span {
+              font-size: 1.6rem;
+            }
+          }
+        }
+
+        .user-rating {
+          .rated {
+            .solid-star-icon {
+              font-size: 2.8rem;
+            }
+
+            #rating {
+              margin-top: 10px;
+              font-size: 1.5rem;
+
+              span {
+                font-size: 1.6rem;
+              }
+            }
+          }
+
+          .empty-star-icon {
+            font-size: 2.8rem;
+          }
+
+          .empty-star-icon-disabled {
+            font-size: 2.8rem;
+          }
+        }
+      }
+
+      .row3 {
+        #title {
+          font-size: 1.3rem;
+          padding: 0 5px;
+        }
+
+        #year {
+          font-size: 1.1rem;
+        }
+      }
+
+      &:hover {
+        .row1 {
+          .list,
+          .list-disabled {
+            width: 60px;
+          }
+
+          .favorite,
+          .favorite-disabled,
+          .favorite-active {
+            width: 60px;
+          }
+        }
       }
     }
   }

@@ -2,9 +2,11 @@
   display: flex;
   flex-direction: column;
   margin: 50px 0;
+  transition: 0.2s ease-in;
 
   .cast-wrapper {
     margin-top: 50px;
+    transition: 0.2s ease-in;
   }
 
   .cast-wrapper,
@@ -12,18 +14,22 @@
     width: 100%;
     display: flex;
     align-items: center;
+    transition: 0.2s ease-in;
 
     .input-box {
       display: flex;
       flex-direction: column;
       width: 40%;
+      transition: 0.2s ease-in;
 
       .input {
         display: flex;
         align-items: center;
+        transition: 0.2s ease-in;
 
         input {
           width: 80%;
+          transition: 0.2s ease-in;
         }
 
         button {
@@ -90,6 +96,7 @@
       justify-items: center;
       gap: 0.5em;
       position: relative;
+      transition: 0.2s ease-in;
 
       .member,
       .director {
@@ -102,10 +109,12 @@
         padding: 5px;
         border-radius: 5px;
         box-shadow: 0 0 25px rgba(0, 0, 0, 0.055);
+        transition: 0.2s ease-in;
 
         span {
           font-size: 0.7rem;
           width: 110px;
+          transition: 0.2s ease-in;
         }
 
         .fa-circle-xmark {
@@ -128,6 +137,7 @@
         text-transform: capitalize;
         color: $danger-hover;
         text-align: center;
+        transition: 0.2s ease-in;
       }
 
       #err-msg {
@@ -145,7 +155,67 @@
         position: absolute;
         top: 50%;
         left: 50%;
+        transition: 0.2s ease-in;
         transform: translate(-50%, -50%);
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    .cast-wrapper {
+      margin-top: 50px;
+    }
+
+    .cast-wrapper,
+    .director-wrapper {
+      flex-direction: column;
+
+      .input-box {
+        width: 100%;
+
+        .input {
+          display: flex;
+          align-items: center;
+
+          input {
+            width: 90%;
+          }
+
+          button {
+            margin-left: 10px;
+          }
+        }
+      }
+
+      .cast-members,
+      .directors {
+        width: 100%;
+        margin-top: 10px;
+      }
+    }
+  }
+
+  @media (max-width: 500px) {
+    .cast-wrapper,
+    .director-wrapper {
+      .cast-members,
+      .directors {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+
+        .member,
+        .director {
+          width: 100px;
+          height: 30px;
+
+          span {
+            font-size: 0.5rem;
+            width: 90px;
+          }
+
+          .fa-circle-xmark {
+            font-size: small;
+          }
+        }
       }
     }
   }

@@ -1,5 +1,5 @@
 <template>
-  <div class="card" @click="handleNavigation">
+  <div class="card-mobile" @click="handleNavigation">
     <div :class="!isImgLoaded ? 'pulsing-img' : 'image'">
       <img
         v-show="isImgLoaded"
@@ -8,43 +8,53 @@
         @load="handleImgLoad"
       />
     </div>
-    <div class="content-info" v-if="isImgLoaded">
-      <div class="row1">
-        <div
-          :class="user?.id ? 'list' : 'list-disabled'"
-          :title="user?.id ? 'Add to the List' : 'You need to be logged in!'"
-          @click.stop="handleOpenListModal"
-        >
-          <i class="fa-solid fa-square-plus add-icon"></i>
-        </div>
-        <div
-          :class="
-            !user?.id
-              ? 'favorite-disabled'
-              : data?.isInFavorite
-              ? 'favorite-active'
-              : 'favorite'
-          "
-          :title="
-            !user?.id
-              ? 'You need to be logged in!'
-              : data?.isInFavorite
-              ? `${data?.title.toUpperCase()}'s added to favorite'. Click to remove!`
-              : 'Add to Favorite'
-          "
-          @click.stop="handleAddToFav"
-        >
-          <spinner-alt v-if="isAddToFavLoading" margin="0" />
-          <div class="icons" v-else>
-            <i
-              class="fa-solid fa-heart fav-icon-active"
-              v-if="data?.isInFavorite"
-            ></i>
-            <i class="fa-regular fa-heart fav-icon" v-else></i>
-          </div>
+    <div class="action-btns">
+      <div
+        :class="user?.id ? 'list' : 'list-disabled'"
+        :title="user?.id ? 'Add to the List' : 'You need to be logged in!'"
+        @click.stop="handleOpenListModal"
+      >
+        <i class="fa-solid fa-square-plus add-icon"></i>
+      </div>
+      <div
+        :class="
+          !user?.id
+            ? 'favorite-disabled'
+            : data?.isInFavorite
+            ? 'favorite-active'
+            : 'favorite'
+        "
+        :title="
+          !user?.id
+            ? 'You need to be logged in!'
+            : data?.isInFavorite
+            ? `${data?.title.toUpperCase()}'s added to favorite'. Click to remove!`
+            : 'Add to Favorite'
+        "
+        @click.stop="handleAddToFav"
+      >
+        <spinner-alt v-if="isAddToFavLoading" margin="0" />
+        <div class="icons" v-else>
+          <i
+            class="fa-solid fa-heart fav-icon-active"
+            v-if="data?.isInFavorite"
+          ></i>
+          <i class="fa-regular fa-heart fav-icon" v-else></i>
         </div>
       </div>
-      <div class="row2">
+    </div>
+    <div class="content-info">
+      <div class="info">
+        <h4 id="title">{{ data.title }}</h4>
+        <h5 id="year">
+          {{
+            data.type === "tv"
+              ? `${data.startYear} - ${data.endYear}`
+              : data.startYear
+          }}
+        </h5>
+      </div>
+      <div class="ratings-wrapper">
         <div
           class="avg-rating"
           :title="`based on ${data?.rating?.count} votes`"
@@ -79,16 +89,6 @@
           ></i>
         </div>
       </div>
-      <div class="row3">
-        <h4 id="title">{{ data.title }}</h4>
-        <h5 id="year">
-          {{
-            data.type === "tv"
-              ? `${data.startYear} - ${data.endYear}`
-              : data.startYear
-          }}
-        </h5>
-      </div>
     </div>
   </div>
 </template>
@@ -100,7 +100,7 @@ import { useStore } from "vuex";
 import SpinnerAlt from "../SpinnerAlt.vue";
 
 export default defineComponent({
-  name: "ContentCard",
+  name: "ContentCardMobile",
   props: ["data"],
   components: { SpinnerAlt },
 

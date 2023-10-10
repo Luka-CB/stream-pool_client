@@ -12,7 +12,7 @@
 
   .list-modal-container {
     background-color: rgb(4, 44, 41);
-    width: 60%;
+    width: 880px;
     height: 500px;
     box-shadow: 0 0 28px rgba(5, 138, 127, 0.282);
     border-radius: 20px;
@@ -22,6 +22,18 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: all 0.2s ease-in-out;
+
+    @media (max-width: 900px) {
+      width: 95%;
+    }
+
+    @media (max-width: 750px) {
+      height: 100%;
+      width: 100%;
+      border-radius: unset;
+      justify-content: flex-start;
+    }
 
     .fa-circle-xmark {
       position: absolute;
@@ -42,12 +54,15 @@
       border-bottom: 1px solid rgba(128, 128, 128, 0.282);
       text-transform: capitalize;
       color: rgb(183, 183, 183);
+      transition: all 0.2s ease-in-out;
 
       h3 {
+        transition: all 0.2s ease-in-out;
         span {
           font-style: italic;
           font-size: large;
           color: $primary;
+          transition: all 0.2s ease-in-out;
         }
       }
     }
@@ -58,6 +73,7 @@
       overflow-y: scroll;
       height: 350px;
       position: relative;
+      transition: all 0.2s ease-in-out;
 
       &::-webkit-scrollbar {
         display: none;
@@ -113,6 +129,7 @@
         transform: translate(-50%, -50%);
         color: $warning;
         text-transform: capitalize;
+        transition: all 0.2s ease-in-out;
       }
 
       .list,
@@ -137,6 +154,7 @@
           padding: 10px;
           display: flex;
           align-items: center;
+          transition: all 0.2s ease-in-out;
 
           .icon {
             width: 50px;
@@ -144,14 +162,17 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: all 0.2s ease-in-out;
 
             .fa-folder {
               font-size: 2rem;
+              transition: all 0.2s ease-in-out;
             }
 
             .fa-folder-open {
               font-size: 2rem;
               color: $success-hover;
+              transition: all 0.2s ease-in-out;
             }
           }
 
@@ -159,6 +180,7 @@
             margin-left: 10px;
             text-transform: capitalize;
             color: rgba(128, 128, 128, 0.47);
+            transition: all 0.2s ease-in-out;
           }
         }
 
@@ -166,6 +188,32 @@
           display: flex;
           align-items: center;
           height: 100%;
+          transition: all 0.2s ease-in-out;
+
+          .open-list {
+            height: 100%;
+            border-left: 1px solid rgba(128, 128, 128, 0.179);
+            border-right: 1px solid rgba(128, 128, 128, 0.179);
+            width: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.1s ease-in-out;
+
+            .fa-arrow-up-right-from-square {
+              transition: all 0.1s ease-in-out;
+            }
+
+            &:hover {
+              background-color: rgba(240, 161, 58, 0.036);
+
+              .fa-arrow-up-right-from-square {
+                color: $primary;
+                font-size: 1.3rem;
+              }
+            }
+          }
 
           .edit {
             height: 100%;
@@ -259,38 +307,47 @@
       .list-edit-state {
         border: 1px solid $warning;
         background-color: rgba(126, 118, 3, 0.34);
+        transition: all 0.2s ease-in-out;
 
         .col1 {
+          transition: all 0.2s ease-in-out;
           .icon {
             .fa-folder,
             .fa-folder-open {
               color: $warning;
+              transition: all 0.2s ease-in-out;
             }
           }
 
           #list-name {
             color: $warning;
             transition: all 0.2s ease-in;
+            transition: all 0.2s ease-in-out;
           }
         }
 
         .col2 {
+          transition: all 0.2s ease-in-out;
           .edit {
             cursor: default;
             background-color: rgba(240, 161, 58, 0.036);
+            transition: all 0.2s ease-in-out;
 
             .edit-icon {
               color: $warning;
               font-size: 1.3rem;
+              transition: all 0.2s ease-in-out;
             }
           }
 
           .delete {
             cursor: default;
+            transition: all 0.2s ease-in-out;
 
             .del-icon {
               transition: all 0.1s ease-in-out;
               color: rgba(255, 255, 255, 0.311);
+              transition: all 0.2s ease-in-out;
             }
 
             &:hover {
@@ -332,15 +389,18 @@
       border-top: 1px solid rgba(128, 128, 128, 0.282);
       display: flex;
       align-items: center;
+      transition: all 0.2s ease-in-out;
 
       .create-list,
       .edit-list {
         padding: 0 10px;
         display: flex;
         align-items: center;
+        transition: all 0.2s ease-in-out;
 
         input {
           width: 350px;
+          transition: all 0.2s ease-in-out;
         }
 
         .btn-outline {
@@ -348,6 +408,7 @@
           width: 150px;
           height: 35px;
           text-transform: uppercase;
+          transition: all 0.2s ease-in-out;
 
           &:disabled {
             border-color: rgba(59, 75, 70, 0.485);
@@ -383,6 +444,9 @@
 
     .edit-state-footer {
       background-color: rgba(181, 152, 40, 0.349);
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+      transition: all 0.2s ease-in-out;
 
       .edit-list {
         input {
@@ -394,55 +458,349 @@
           }
         }
 
-        .upd-btn {
-          border-color: $warning;
-          color: $warning;
+        .btns {
+          display: flex;
 
-          &:hover {
-            background-color: rgba(255, 229, 127, 0.123);
-            border-color: $warning-hover;
-            color: $warning-hover;
-          }
-
-          &:disabled {
-            border-color: rgba(124, 124, 124, 0.523);
-            color: rgba(124, 124, 124, 0.523);
+          .upd-btn {
+            border-color: $warning;
+            color: $warning;
 
             &:hover {
-              border-color: rgba(124, 124, 124, 0.523);
-              color: rgba(124, 124, 124, 0.523);
+              background-color: rgba(255, 229, 127, 0.123);
+              border-color: $warning-hover;
+              color: $warning-hover;
             }
 
-            &:active {
+            &:disabled {
               border-color: rgba(124, 124, 124, 0.523);
               color: rgba(124, 124, 124, 0.523);
+
+              &:hover {
+                border-color: rgba(124, 124, 124, 0.523);
+                color: rgba(124, 124, 124, 0.523);
+              }
+
+              &:active {
+                border-color: rgba(124, 124, 124, 0.523);
+                color: rgba(124, 124, 124, 0.523);
+              }
+            }
+          }
+
+          .cancel-btn {
+            border-color: rgb(210, 210, 210);
+            color: rgb(210, 210, 210);
+
+            &:hover {
+              background-color: rgba(255, 255, 255, 0.123);
+              border-color: aliceblue;
+              color: aliceblue;
+            }
+
+            &:disabled {
+              border-color: rgba(124, 124, 124, 0.523);
+              color: rgba(124, 124, 124, 0.523);
+
+              &:hover {
+                border-color: rgba(124, 124, 124, 0.523);
+                color: rgba(124, 124, 124, 0.523);
+              }
+
+              &:active {
+                border-color: rgba(124, 124, 124, 0.523);
+                color: rgba(124, 124, 124, 0.523);
+              }
             }
           }
         }
+      }
+    }
 
-        .cancel-btn {
-          border-color: rgb(210, 210, 210);
-          color: rgb(210, 210, 210);
+    @media (min-width: 1920px) {
+      width: 1200px;
+      height: 80vh;
+      justify-content: flex-start;
 
-          &:hover {
-            background-color: rgba(255, 255, 255, 0.123);
-            border-color: aliceblue;
-            color: aliceblue;
+      .fa-circle-xmark {
+        font-size: 2rem;
+      }
+
+      .header {
+        padding: 15px;
+
+        h3 {
+          font-size: 1.3rem;
+          span {
+            font-size: 1.5rem;
+          }
+        }
+      }
+
+      .body {
+        height: 60vh;
+
+        #no-lists {
+          font-size: 1.5rem;
+        }
+
+        .list,
+        .list-active,
+        .list-edit-state {
+          box-shadow: 0 0 3px rgba(0, 0, 0, 0.589);
+          margin: 10px auto;
+
+          .col1 {
+            .icon {
+              width: 60px;
+              height: 50px;
+
+              .fa-folder {
+                font-size: 2.5rem;
+              }
+
+              .fa-folder-open {
+                font-size: 2.5rem;
+              }
+            }
+
+            #list-name {
+              font-size: 1.4rem;
+            }
           }
 
-          &:disabled {
-            border-color: rgba(124, 124, 124, 0.523);
-            color: rgba(124, 124, 124, 0.523);
+          .col2 {
+            .open-list {
+              width: 70px;
 
-            &:hover {
-              border-color: rgba(124, 124, 124, 0.523);
-              color: rgba(124, 124, 124, 0.523);
+              .fa-arrow-up-right-from-square {
+                font-size: 1.5rem;
+              }
+
+              &:hover {
+                .fa-arrow-up-right-from-square {
+                  font-size: 1.3rem;
+                }
+              }
             }
 
-            &:active {
-              border-color: rgba(124, 124, 124, 0.523);
-              color: rgba(124, 124, 124, 0.523);
+            .edit {
+              width: 70px;
+
+              .edit-icon {
+                font-size: 1.5rem;
+              }
+
+              &:hover {
+                .edit-icon {
+                  font-size: 1.3rem;
+                }
+              }
             }
+
+            .delete {
+              width: 70px;
+
+              .del-icon {
+                font-size: 1.5rem;
+              }
+
+              &:hover {
+                .del-icon {
+                  font-size: 1.3rem;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .footer,
+      .edit-state-footer {
+        flex: 1;
+
+        .create-list,
+        .edit-list {
+          input {
+            width: 550px;
+            height: 60px;
+            border-radius: 15px;
+            font-size: 1.1rem;
+          }
+
+          .create-btn {
+            width: 200px;
+            height: 50px;
+            font-size: 1.1rem;
+          }
+        }
+      }
+
+      .edit-state-footer {
+        .edit-list {
+          input {
+            width: 700px;
+          }
+
+          .btns {
+            .upd-btn {
+              height: 50px;
+              width: 200px;
+              font-size: 1.2rem;
+            }
+
+            .cancel-btn {
+              height: 50px;
+              width: 200px;
+              font-size: 1.2rem;
+            }
+          }
+        }
+      }
+    }
+
+    @media (max-width: 750px) {
+      .body {
+        height: 70vh;
+        padding: 20px 0;
+      }
+
+      .footer,
+      .edit-state-footer {
+        flex: 1;
+      }
+
+      .edit-state-footer {
+        border-radius: unset;
+
+        .edit-list {
+          flex-direction: column;
+          justify-content: center;
+          width: 100%;
+          height: 100%;
+
+          input {
+            width: 100%;
+          }
+
+          .btns {
+            margin-top: 20px;
+          }
+        }
+      }
+    }
+
+    @media (max-width: 550px) {
+      .footer,
+      .edit-state-footer {
+        .create-list,
+        .edit-list {
+          width: 100%;
+          flex-direction: column;
+
+          input {
+            width: 100%;
+          }
+
+          .create-btn {
+            margin-left: 0;
+            margin-top: 20px;
+            width: 240px;
+          }
+        }
+      }
+    }
+
+    @media (max-width: 500px) {
+      .header {
+        h3 {
+          font-size: small;
+
+          span {
+            font-size: medium;
+          }
+        }
+      }
+
+      .body {
+        #no-lists {
+          font-size: small;
+        }
+
+        .list,
+        .list-active,
+        .list-edit-state {
+          flex-direction: column;
+
+          .col1 {
+            align-self: flex-start;
+
+            .icon {
+              width: 50px;
+              height: 40px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+
+              .fa-folder {
+                font-size: 2rem;
+              }
+
+              .fa-folder-open {
+                font-size: 2rem;
+                color: $success-hover;
+              }
+            }
+
+            #list-name {
+              margin-left: 10px;
+              text-transform: capitalize;
+              color: rgba(128, 128, 128, 0.47);
+            }
+          }
+
+          .col2 {
+            align-self: flex-end;
+            height: 40px;
+
+            .delete {
+              border-top-right-radius: unset;
+            }
+          }
+        }
+      }
+    }
+
+    @media (max-width: 350px) {
+      .edit-state-footer {
+        .edit-list {
+          .btns {
+            .upd-btn {
+              width: 70px;
+              height: 30px;
+              font-size: 0.7rem;
+            }
+
+            .cancel-btn {
+              width: 70px;
+              height: 30px;
+              font-size: 0.7rem;
+            }
+          }
+        }
+      }
+    }
+
+    @media (max-width: 300px) {
+      .fa-circle-xmark {
+        font-size: 1.2rem;
+      }
+
+      .header {
+        h3 {
+          font-size: 0.7rem;
+
+          span {
+            font-size: 0.8rem;
           }
         }
       }

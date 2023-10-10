@@ -1,6 +1,8 @@
 <template>
   <div class="auth-container">
-    <go-back />
+    <div class="back-btn">
+      <go-back />
+    </div>
     <div class="spinner" v-if="isLoading">
       <spinner-vue width="5" height="5" />
     </div>
@@ -43,7 +45,6 @@ import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex";
 import GoBack from "../components/GoBack.vue";
 import SpinnerVue from "../components/Spinner.vue";
-import ErrorMsg from "../components/ErrorMsg.vue";
 
 export default defineComponent({
   name: "SigninView",

@@ -1,6 +1,5 @@
 import { StateIface } from "@/store";
 import axios from "@/utils/axios";
-import { AxiosError } from "axios";
 import { ActionContext } from "vuex";
 import { formatDistanceToNow } from "date-fns";
 
@@ -160,7 +159,7 @@ const actions = {
         state.isGetProfileLoading = false;
         commit("SET_PROFILE", data);
       }
-    } catch (error: AxiosError | any) {
+    } catch (error) {
       state.isGetProfileLoading = false;
       console.log(error);
     }
@@ -179,7 +178,7 @@ const actions = {
         state.isSomeGetRatedContentLoading = false;
         commit("SET_SOME_RATED_CONTENTS", data);
       }
-    } catch (error: AxiosError | any) {
+    } catch (error) {
       state.isSomeGetRatedContentLoading = false;
       console.log(error);
     }
@@ -198,7 +197,7 @@ const actions = {
         state.isSomeFavContentLoading = false;
         commit("SET_SOME_FAV_CONTENTS", data);
       }
-    } catch (error: AxiosError | any) {
+    } catch (error) {
       state.isSomeFavContentLoading = false;
       console.log(error);
     }
@@ -217,7 +216,7 @@ const actions = {
         state.isGetSomeUserCommentsLoading = false;
         commit("SET_SOME_USER_COMMENTS", data);
       }
-    } catch (error: AxiosError | any) {
+    } catch (error) {
       state.isGetSomeUserCommentsLoading = false;
       console.log(error);
     }

@@ -1,6 +1,14 @@
+$contentCardWidthLg: 350px;
+$contentCardHeightLg: 650px;
+$contentCardImageHeightLg: 490px;
+
 $contentCardWidth: 250px;
 $contentCardHeight: 450px;
 $contentCardImageHeight: 360px;
+
+$contentCardWidthSm: 170px;
+$contentCardHeightSm: 350px;
+$contentCardImageHeightSm: 260px;
 
 .divider {
   width: 100%;
@@ -28,6 +36,7 @@ $contentCardImageHeight: 360px;
 
 .profile-container {
   min-height: 100vh;
+  transition: all 0.2s ease-in-out;
 
   .user-info-container {
     background-color: rgb(4, 44, 41);
@@ -51,10 +60,12 @@ $contentCardImageHeight: 360px;
       width: 100%;
       display: flex;
       justify-content: space-between;
+      transition: all 0.2s ease-in-out;
 
       .col1 {
         display: flex;
         width: 80%;
+        transition: all 0.2s ease-in-out;
 
         .user-look {
           width: 150px;
@@ -63,6 +74,7 @@ $contentCardImageHeight: 360px;
           flex-direction: column;
           justify-content: center;
           align-items: center;
+          transition: all 0.2s ease-in-out;
 
           .user-icon {
             width: 100px;
@@ -70,10 +82,12 @@ $contentCardImageHeight: 360px;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: all 0.2s ease-in-out;
 
             .fa-circle-user {
               font-size: 5rem;
               color: $primary;
+              transition: all 0.2s ease-in-out;
             }
           }
 
@@ -83,6 +97,7 @@ $contentCardImageHeight: 360px;
             height: 30px;
             text-transform: uppercase;
             font-weight: bold;
+            transition: all 0.2s ease-in-out;
           }
         }
 
@@ -91,16 +106,19 @@ $contentCardImageHeight: 360px;
             color: $primary;
             letter-spacing: 2px;
             text-transform: uppercase;
+            transition: all 0.2s ease-in-out;
           }
 
           #email {
             margin-top: 5px;
             color: rgb(169, 169, 169);
+            transition: all 0.2s ease-in-out;
           }
 
           #date {
             margin-top: 5px;
             color: rgb(154, 154, 154);
+            transition: all 0.2s ease-in-out;
 
             em {
               font-size: small;
@@ -114,6 +132,7 @@ $contentCardImageHeight: 360px;
         display: flex;
         align-items: flex-end;
         justify-content: flex-end;
+        transition: all 0.2s ease-in-out;
 
         .account-btn {
           border: none;
@@ -144,6 +163,114 @@ $contentCardImageHeight: 360px;
         }
       }
     }
+
+    @media (min-width: 1920px) {
+      .user-info-wrapper {
+        .col1 {
+          .user-look {
+            width: 250px;
+            padding: 0 15px;
+
+            .user-icon {
+              width: 200px;
+              height: 200px;
+
+              .fa-circle-user {
+                font-size: 10rem;
+              }
+            }
+
+            .btn-primary {
+              width: 180px;
+              height: 40px;
+              font-size: 1.5rem;
+            }
+          }
+
+          .user-info {
+            #username {
+              letter-spacing: 5px;
+              font-size: 2.5rem;
+            }
+
+            #email {
+              font-size: 1.5rem;
+            }
+
+            #date {
+              font-size: 1.2rem;
+
+              em {
+                font-size: 1rem;
+              }
+            }
+          }
+        }
+
+        .col2 {
+          .account-btn {
+            width: 80px;
+            height: 80px;
+            box-shadow: 0 16px 16px -4px rgba(0, 0, 0, 0.605);
+
+            .fa-pencil {
+              font-size: 2rem;
+            }
+
+            &:hover {
+              box-shadow: 0 22px 22px -4px rgba(0, 0, 0, 0.76);
+
+              .fa-pencil {
+                font-size: 2.2rem;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    @media (max-width: 800px) {
+      width: 95%;
+    }
+
+    @media (max-width: 500px) {
+      padding: 10px;
+
+      .user-info-wrapper {
+        flex-direction: column;
+
+        .col1 {
+          flex-direction: column;
+          width: 100%;
+          align-items: center;
+
+          .user-look {
+            width: 100%;
+            padding: 0;
+
+            &::after {
+              content: "";
+              width: 100%;
+              height: 2px;
+              background-color: rgba(86, 86, 86, 0.425);
+              margin: 10px 0;
+            }
+          }
+
+          .user-info {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+
+        .col2 {
+          margin-top: 50px;
+        }
+      }
+    }
   }
 
   .rated-content-container {
@@ -154,6 +281,10 @@ $contentCardImageHeight: 360px;
       margin: 10px;
       text-transform: capitalize;
       color: $primary;
+
+      @media (max-width: 300px) {
+        font-size: large;
+      }
     }
 
     .rated-contents {
@@ -298,6 +429,141 @@ $contentCardImageHeight: 360px;
         }
       }
     }
+
+    @media (min-width: 1920px) {
+      margin-top: 200px;
+      height: 100vh;
+
+      #title {
+        font-size: 2.5rem;
+      }
+
+      .rated-contents {
+        .content {
+          width: $contentCardWidthLg;
+          height: $contentCardHeightLg;
+          box-shadow: 0 0 45px rgba(0, 0, 0, 0.315);
+
+          .pulsing-img,
+          .image {
+            width: $contentCardWidthLg;
+            height: $contentCardImageHeightLg;
+          }
+
+          .info {
+            height: calc($contentCardHeightLg - $contentCardImageHeightLg);
+
+            .content-title {
+              #name {
+                font-size: 1.5rem;
+              }
+
+              #year {
+                font-size: large;
+                margin-left: 10px;
+              }
+            }
+
+            .rating {
+              margin-top: 25px;
+
+              .avg-rating {
+                .star-solid {
+                  font-size: 2rem;
+                }
+
+                span {
+                  font-size: 1.3rem;
+
+                  em {
+                    font-size: 1.4rem;
+                  }
+                }
+              }
+
+              .user-rating {
+                .star-rated {
+                  font-size: 2rem;
+                }
+
+                span {
+                  font-size: 1.3rem;
+
+                  em {
+                    font-size: 1.4rem;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    @media (max-width: 800px) {
+      .rated-contents {
+        .content {
+          width: $contentCardWidthSm;
+          height: $contentCardHeightSm;
+
+          .pulsing-img,
+          .image {
+            width: $contentCardWidthSm;
+            height: $contentCardImageHeightSm;
+          }
+
+          .info {
+            height: calc($contentCardHeightSm - $contentCardImageHeightSm);
+
+            .content-title {
+              flex-direction: column;
+
+              #name {
+                font-size: small;
+              }
+
+              #year {
+                margin-top: 5px;
+                margin-left: 0;
+                font-size: 0.7rem;
+              }
+            }
+
+            .rating {
+              margin-top: 15px;
+
+              .avg-rating {
+                .star-solid {
+                  font-size: 0.8rem;
+                }
+
+                span {
+                  font-size: 0.7rem;
+
+                  em {
+                    font-size: 0.8rem;
+                  }
+                }
+              }
+
+              .user-rating {
+                .star-rated {
+                  font-size: 0.8rem;
+                }
+
+                span {
+                  font-size: 0.7rem;
+
+                  em {
+                    font-size: 0.8rem;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 
   .fav-content-container {
@@ -308,6 +574,10 @@ $contentCardImageHeight: 360px;
       margin: 10px;
       text-transform: capitalize;
       color: $primary;
+
+      @media (max-width: 300px) {
+        font-size: large;
+      }
     }
 
     .fav-contents {
@@ -437,16 +707,124 @@ $contentCardImageHeight: 360px;
         }
       }
     }
+
+    @media (max-width: 800px) {
+      margin-top: 50px;
+
+      .fav-contents {
+        .content {
+          width: $contentCardWidthSm;
+          height: $contentCardHeightSm;
+
+          .pulsing-img,
+          .image {
+            width: $contentCardWidthSm;
+            height: $contentCardImageHeightSm;
+          }
+
+          .info {
+            height: calc($contentCardHeightSm - $contentCardImageHeightSm);
+
+            .content-title {
+              flex-direction: column;
+              margin-top: 10px;
+
+              #name {
+                font-size: small;
+              }
+
+              #year {
+                font-size: 0.7rem;
+                margin-left: 0;
+                margin-top: 5px;
+              }
+            }
+
+            .fav-icon {
+              width: 35px;
+              height: 30px;
+
+              .fa-heart {
+                font-size: 1.2rem;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    @media (min-width: 1920px) {
+      margin-top: 200px;
+      height: 100vh;
+
+      #title {
+        font-size: 2.5rem;
+      }
+
+      .fav-contents {
+        .content {
+          width: $contentCardWidthLg;
+          height: $contentCardHeightLg;
+          box-shadow: 0 0 45px rgba(0, 0, 0, 0.315);
+
+          .pulsing-img,
+          .image {
+            width: $contentCardWidthLg;
+            height: $contentCardImageHeightLg;
+          }
+
+          .info {
+            height: calc($contentCardHeightLg - $contentCardImageHeightLg);
+
+            .content-title {
+              #name {
+                font-size: 1.5rem;
+              }
+
+              #year {
+                font-size: large;
+                margin-left: 10px;
+              }
+            }
+
+            .fav-icon {
+              margin-top: 20px;
+              width: 100px;
+              height: 80px;
+
+              .fa-heart {
+                font-size: 3rem;
+              }
+
+              &:hover {
+                .fa-heart {
+                  font-size: 3.2rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 
   .user-comments-container {
     margin-top: 100px;
     height: 80vh;
 
+    @media (max-width: 800px) {
+      margin-top: 50px;
+      height: 60vh;
+    }
+
     #title {
       margin: 10px;
       text-transform: capitalize;
       color: $primary;
+
+      @media (max-width: 300px) {
+        font-size: large;
+      }
     }
 
     .user-comments {
@@ -459,11 +837,25 @@ $contentCardImageHeight: 360px;
         display: none;
       }
     }
+
+    @media (min-width: 1920px) {
+      margin-top: 200px;
+      height: 80vh;
+
+      #title {
+        font-size: 2.5rem;
+      }
+    }
   }
 
   .user-lists-container {
     margin-top: 100px;
     height: 80vh;
+
+    @media (max-width: 800px) {
+      margin-top: 50px;
+      height: 50vh;
+    }
 
     .user-lists-header {
       display: flex;
@@ -474,6 +866,10 @@ $contentCardImageHeight: 360px;
         margin: 10px;
         text-transform: capitalize;
         color: $primary;
+
+        @media (max-width: 300px) {
+          font-size: large;
+        }
       }
 
       .add-btn {
@@ -502,6 +898,29 @@ $contentCardImageHeight: 360px;
 
       &::-webkit-scrollbar {
         display: none;
+      }
+    }
+
+    @media (min-width: 1920px) {
+      margin-top: 200px;
+      height: 60vh;
+
+      .user-lists-header {
+        #title {
+          font-size: 2.5rem;
+        }
+
+        .add-btn {
+          width: 200px;
+          height: 40px;
+          margin-right: 10px;
+          font-size: 1.3rem;
+
+          .fa-circle-plus {
+            margin-right: 10px;
+            font-size: 2.5rem;
+          }
+        }
       }
     }
   }
@@ -560,6 +979,53 @@ $contentCardImageHeight: 360px;
 
       em {
         background-color: rgb(4, 44, 41);
+
+        &::before {
+          content: "";
+          width: 40px;
+          height: 2px;
+        }
+
+        &::after {
+          content: "";
+          width: 40px;
+          height: 2px;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 1920px) {
+    #link-text {
+      font-size: 1.5rem;
+
+      em {
+        width: 80px;
+        font-size: 1.6rem;
+      }
+
+      &:hover {
+        em {
+          &::before {
+            width: 80px;
+          }
+
+          &::after {
+            width: 80px;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 800px) {
+    #link-text {
+      color: $primary-hover;
+      cursor: pointer;
+
+      em {
+        background-color: rgb(4, 44, 41);
+        margin: 0 5px;
 
         &::before {
           content: "";

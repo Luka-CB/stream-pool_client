@@ -113,12 +113,16 @@ export default defineComponent({
       const crewFromStorage = computed(() => store.getters.crew);
 
       const crew = {
-        directors: crewFromStorage.value.directors.map((x: any) => {
-          return { name: x.name };
-        }),
-        cast: crewFromStorage.value.cast.map((x: any) => {
-          return { name: x.name };
-        }),
+        directors: crewFromStorage.value.directors.map(
+          (x: { _id: string; name: string }) => {
+            return { name: x.name };
+          }
+        ),
+        cast: crewFromStorage.value.cast.map(
+          (x: { _id: string; name: string }) => {
+            return { name: x.name };
+          }
+        ),
       };
 
       const genres = computed(() => store.getters.pickedGenres);

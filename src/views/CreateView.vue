@@ -1,8 +1,14 @@
 <template>
   <div class="create-container">
-    <go-back />
-    <div class="home-icon" title="Back to home page" @click="handleNavigation">
-      <i class="fa-solid fa-house-chimney-window"></i>
+    <div class="icon-btns">
+      <go-back />
+      <div
+        class="home-icon"
+        title="Back to home page"
+        @click="handleNavigation"
+      >
+        <i class="fa-solid fa-house-chimney-window"></i>
+      </div>
     </div>
     <div class="spinner" v-if="isLoading">
       <spinner-vue :width="6" :height="6" />
@@ -33,9 +39,6 @@ export default defineComponent({
     const contentType = computed(() => route.fullPath.split("/")[2]);
     const imgError = computed(() => store.getters.imgError);
     const isLoading = computed(() => store.getters.isAddContentLoading);
-    const isAddContentSuccess = computed(
-      () => store.getters.isAddContentSuccess
-    );
 
     const routeName = computed(() => route.name);
     watchEffect(() => {
@@ -71,8 +74,9 @@ export default defineComponent({
 .create-container {
   min-height: 80vh;
   padding: 50px 0;
-  margin-top: 20px;
+  // margin-top: 20px;
   position: relative;
+  width: 100%;
 
   .spinner {
     position: fixed;

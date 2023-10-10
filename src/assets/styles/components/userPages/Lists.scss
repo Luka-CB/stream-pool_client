@@ -2,19 +2,20 @@
   min-height: 100vh;
   position: relative;
 
-  .nav-wrapper {
-    position: absolute;
-    top: 20%;
-    width: 200px;
-    height: 450px;
-  }
-
   .lists-wrapper {
     width: 80%;
     min-height: 80vh;
     float: right;
-    margin-top: 50px;
+    margin-top: 100px;
     position: relative;
+
+    @media (max-width: 1000px) {
+      width: 70%;
+    }
+
+    @media (max-width: 800px) {
+      width: 100%;
+    }
 
     .spinner {
       background-color: rgba(0, 0, 0, 0.589);
@@ -84,6 +85,68 @@
             color: $primary;
           }
         }
+
+        @media (min-width: 1920px) {
+        }
+
+        @media (max-width: 500px) {
+          flex-direction: column;
+          margin-right: 0;
+
+          .sort {
+            margin-right: 0;
+          }
+
+          .add-btn {
+            margin-left: 0;
+            margin-top: 20px;
+          }
+        }
+      }
+
+      @media (min-width: 1920px) {
+        .col1 {
+          span {
+            font-size: 1.5rem;
+          }
+        }
+
+        .col2 {
+          display: flex;
+          margin-right: 40px;
+
+          .sort {
+            margin-right: 40px;
+
+            span {
+              font-size: 1.3rem;
+            }
+
+            .arrows {
+              .fa-up-long,
+              .fa-down-long {
+                font-size: 1.8rem;
+              }
+            }
+          }
+
+          .add-btn {
+            width: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+
+            span {
+              font-size: 1.3rem;
+            }
+
+            .fa-circle-plus {
+              margin-right: 10px;
+              font-size: 1.8rem;
+            }
+          }
+        }
       }
     }
 
@@ -95,6 +158,21 @@
       grid-template-columns: repeat(2, 1fr);
       justify-items: center;
       gap: 2em 1em;
+
+      @media (max-width: 1200px) {
+        grid-template-columns: 1fr;
+        justify-items: start;
+        gap: 2em 0;
+        padding: 30px 10px;
+      }
+
+      @media (max-width: 800px) {
+        border-top-left-radius: unset;
+      }
+
+      @media (max-width: 500px) {
+        justify-items: center;
+      }
     }
   }
 }

@@ -4,6 +4,9 @@
   align-self: flex-end;
   padding-bottom: 40px;
   transition: all 0.2s ease-in-out;
+  background-color: #252525a0;
+  border-top-left-radius: 20px;
+  box-shadow: 0 12px 12px -4px rgba(0, 0, 0, 0.462);
 
   .show-replies-btn-wrapper {
     border-top: 1px solid gray;
@@ -69,6 +72,7 @@
   }
 
   .input-wrapper {
+    padding: 0 10px;
     margin-top: 50px;
     display: flex;
     align-items: center;
@@ -394,6 +398,334 @@
                 background-color: #ffc90873;
                 color: rgba(0, 0, 0, 0.5);
                 box-shadow: 0 6px 6px -4px black;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (min-width: 1920px) {
+    .show-replies-btn-wrapper {
+      .show-replies-btn {
+        width: 250px;
+
+        .fa-caret-right,
+        .fa-caret-down {
+          font-size: 1.5rem;
+        }
+
+        span {
+          font-size: 1.3rem;
+        }
+
+        .fa-reply {
+          font-size: 2rem;
+        }
+      }
+
+      .replies-count {
+        font-size: 1.2rem;
+        em {
+          font-size: 1.3rem;
+        }
+      }
+    }
+
+    .input-wrapper {
+      textarea {
+        height: 100px;
+        font-size: 0.9rem;
+      }
+
+      #add-reply-btn {
+        width: 160px;
+        font-size: 1rem;
+      }
+    }
+
+    .replies {
+      .reply {
+        &:not(:first-child) {
+          margin-top: 40px;
+        }
+
+        .header {
+          .header-col1 {
+            .avatar {
+              width: 60px;
+              height: 60px;
+              font-size: 3rem;
+            }
+
+            .inner-wrapper {
+              #name {
+                font-size: 1.2rem;
+              }
+
+              #date {
+                font-size: 0.8rem;
+              }
+            }
+          }
+
+          .header-col2 {
+            .edit {
+              background-color: rgba(240, 248, 255, 0.03);
+              width: 60px;
+              height: 60px;
+
+              .edit-icon {
+                font-size: 1.8rem;
+              }
+
+              &:hover {
+                .edit-icon {
+                  font-size: 1.7rem;
+                  transition: all 0.1s ease-in-out;
+                }
+              }
+            }
+
+            .delete {
+              background-color: rgba(240, 248, 255, 0.03);
+              width: 60px;
+              height: 60px;
+
+              .del-icon {
+                font-size: 1.5rem;
+              }
+
+              &:hover {
+                background-color: rgba(240, 248, 255, 0.093);
+
+                .del-icon {
+                  font-size: 1.4rem;
+                  transition: all 0.1s ease-in-out;
+                }
+              }
+            }
+          }
+        }
+
+        .body {
+          #reply-text {
+            font-size: medium;
+
+            em {
+              font-size: large;
+            }
+          }
+
+          .btn-primary {
+            width: 90px;
+            height: 30px;
+
+            span {
+              font-size: medium;
+            }
+
+            .fa-reply {
+              font-size: 1.5rem;
+              margin-left: 5px;
+            }
+          }
+        }
+
+        .prompt-bg {
+          .prompt-body {
+            p {
+              font-size: 1.3rem;
+            }
+
+            .btns {
+              button {
+                border: none;
+                outline: none;
+                width: 250px;
+                height: 40px;
+              }
+
+              #yes {
+                font-size: 1.3rem;
+              }
+
+              #no {
+                font-size: 1.3rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1000px) {
+    margin-top: 20px;
+    width: 80%;
+
+    @media (max-width: 700px) {
+      width: 100%;
+    }
+
+    .show-replies-btn-wrapper {
+      @media (max-width: 700px) {
+        border-radius: unset;
+      }
+      .show-replies-btn {
+        width: 130px;
+
+        .fa-caret-right,
+        .fa-caret-down {
+          font-size: 0.8rem;
+          margin-right: 0;
+        }
+
+        span {
+          font-size: 0.7rem;
+        }
+
+        .fa-reply {
+          margin-left: 3px;
+          font-size: 1rem;
+        }
+      }
+
+      .replies-count {
+        font-size: small;
+
+        em {
+          margin-right: 5px;
+        }
+      }
+    }
+
+    .replies {
+      margin: 40px 0;
+      transition: all 0.2s ease-in-out;
+
+      .reply {
+        position: relative;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.351);
+        padding: 10px;
+        border-radius: 10px;
+        &:not(:first-child) {
+          margin-top: 20px;
+        }
+
+        .header {
+          .header-col1 {
+            .avatar {
+              width: 30px;
+              height: 30px;
+              font-size: 1.5rem;
+              border: 1px solid rgba(240, 248, 255, 0.584);
+            }
+
+            .inner-wrapper {
+              margin-left: 5px;
+
+              #name {
+                font-size: 0.7rem;
+              }
+
+              #date {
+                margin-left: 2px;
+                font-size: 0.6rem;
+              }
+            }
+          }
+
+          .header-col2 {
+            .edit {
+              margin-right: 10px;
+              width: 30px;
+              height: 30px;
+              background-color: rgba(240, 248, 255, 0.093);
+
+              .edit-icon {
+                color: $warning;
+                transition: all 0.2s ease-in-out;
+                font-size: small;
+              }
+            }
+
+            .delete {
+              width: 30px;
+              height: 30px;
+              background-color: rgba(240, 248, 255, 0.093);
+
+              .del-icon {
+                color: $danger;
+                transition: all 0.2s ease-in-out;
+                font-size: small;
+              }
+            }
+          }
+        }
+
+        .body {
+          #reply-text {
+            font-size: 0.7rem;
+          }
+
+          .btn-primary {
+            margin-top: 20px;
+            width: 55px;
+            height: 20px;
+            border-radius: 5px;
+
+            span {
+              font-size: 0.6rem;
+            }
+
+            .fa-reply {
+              font-size: 0.7rem;
+              margin-left: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 500px) {
+    border-top-left-radius: unset;
+
+    .input-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      textarea {
+        width: 100%;
+        height: 70px;
+        border-radius: 5px;
+      }
+
+      #add-reply-btn {
+        width: 100%;
+        height: 30px;
+        margin-left: 0;
+        margin-top: 5px;
+        border-radius: 5px;
+        border: 2px solid rgba(2, 81, 76, 0.975);
+        font-size: 0.7rem;
+      }
+    }
+
+    .replies {
+      .reply {
+        .header {
+          .header-col1 {
+            .inner-wrapper {
+              @media (max-width: 400px) {
+                flex-direction: column;
+
+                #date {
+                  margin-left: 0;
+                }
               }
             }
           }

@@ -249,4 +249,394 @@
       }
     }
   }
+
+  @media (min-width: 1920px) {
+    margin: 300px 0 100px 0;
+
+    .submit-comment {
+      textarea {
+        font-size: 1.3rem;
+      }
+
+      .btn-primary {
+        width: 300px;
+        height: 50px;
+        font-size: 1.3rem;
+      }
+    }
+
+    .comments {
+      .comment {
+        min-height: 350px;
+
+        .col1 {
+          width: 220px;
+
+          .avatar {
+            width: 70px;
+            height: 70px;
+            font-size: 2.8rem;
+          }
+
+          #name {
+            margin-top: 10px;
+            font-size: 1.2rem;
+          }
+
+          .icons {
+            .edit {
+              width: 60px;
+              height: 60px;
+              background-color: rgba(240, 248, 255, 0.03);
+
+              .edit-icon {
+                font-size: 1.7rem;
+              }
+
+              &:hover {
+                .edit-icon {
+                  transition: all 0.1s ease-in-out;
+                  font-size: 1.6rem;
+                }
+              }
+            }
+
+            .delete {
+              width: 60px;
+              height: 60px;
+              background-color: rgba(240, 248, 255, 0.03);
+
+              .del-icon {
+                font-size: 1.6rem;
+              }
+
+              &:hover {
+                .del-icon {
+                  font-size: 1.5rem;
+                  transition: all 0.1s ease-in-out;
+                }
+              }
+            }
+          }
+
+          #date {
+            font-size: 1rem;
+          }
+
+          .btn-primary {
+            width: 120px;
+            height: 40px;
+
+            span {
+              font-size: 1.1rem;
+            }
+
+            .fa-reply {
+              font-size: 1.7rem;
+            }
+          }
+        }
+
+        .divider {
+          height: 350px;
+        }
+
+        .col2 {
+          #description {
+            font-size: large;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1000px) {
+    .title {
+      font-size: large;
+    }
+
+    .submit-comment {
+      width: 40%;
+      height: 150px;
+
+      @media (max-width: 600px) {
+        width: 60%;
+      }
+
+      .btn-primary {
+        width: 150px;
+        height: 40px;
+        border-radius: 5px;
+        font-size: 0.7rem;
+      }
+    }
+
+    .comments {
+      width: 100%;
+      margin-top: 100px;
+
+      .comment {
+        .col1 {
+          width: 120px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          .avatar {
+            width: 30px;
+            height: 30px;
+            border: 1px solid gray;
+            font-size: 1.5rem;
+          }
+
+          #name {
+            font-size: 0.7rem;
+          }
+
+          .icons {
+            margin-top: 10px;
+
+            .edit {
+              width: 30px;
+              background-color: rgba(240, 248, 255, 0.093);
+              height: 30px;
+
+              .edit-icon {
+                color: $warning;
+                font-size: small;
+              }
+            }
+
+            .delete {
+              background-color: rgba(240, 248, 255, 0.093);
+              width: 30px;
+              height: 30px;
+
+              .del-icon {
+                color: $danger;
+                transition: all 0.2s ease-in-out;
+                font-size: small;
+              }
+            }
+          }
+
+          #date {
+            margin-top: 10px;
+            font-size: 0.7rem;
+          }
+
+          .btn-primary {
+            margin-top: 30px;
+            width: 60px;
+            height: 30px;
+            text-transform: uppercase;
+            box-shadow: 0 6px 6px -4px rgba(0, 0, 0, 0.693);
+
+            span {
+              font-size: 0.6rem;
+            }
+
+            .fa-reply {
+              font-size: 1rem;
+            }
+          }
+        }
+
+        .divider {
+          width: 1px;
+          height: 250px;
+          background-color: rgba(62, 62, 62, 0.721);
+        }
+
+        .col2 {
+          #description {
+            min-height: 150px;
+            font-size: 0.7rem;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 500px) {
+    .title {
+      font-size: large;
+    }
+
+    .submit-comment {
+      width: 95%;
+      margin: 0 auto;
+      margin-top: 10px;
+
+      .btn-primary {
+        width: 100%;
+        border-width: 1px;
+      }
+    }
+
+    .comments {
+      width: 100%;
+      margin: 0;
+      margin-top: 50px;
+
+      .comment {
+        flex-direction: column;
+        border-radius: unset;
+
+        .col1 {
+          width: 100%;
+          flex-direction: row;
+          justify-content: flex-start;
+          align-items: flex-end;
+          position: relative;
+
+          .avatar {
+            width: 30px;
+            height: 30px;
+            border: 1px solid gray;
+            font-size: 1.4rem;
+          }
+
+          #name {
+            font-size: 0.7rem;
+            margin-left: 5px;
+          }
+
+          .icons {
+            display: none;
+          }
+
+          #date {
+            margin-top: 0;
+            margin-left: 10px;
+            font-size: 0.6rem;
+          }
+
+          .btn-primary {
+            display: none;
+          }
+
+          .comment-option {
+            position: absolute;
+            right: 0;
+
+            .option-icon {
+              width: 30px;
+              height: 30px;
+              border-radius: 50%;
+              background-color: rgba(255, 255, 255, 0.064);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+
+              .fa-ellipsis-vertical {
+                font-size: 1.3rem;
+              }
+            }
+
+            .option-wrapper {
+              position: absolute;
+              top: 0;
+              right: 100%;
+              background-color: rgb(8, 28, 26);
+              width: 100px;
+              height: 80px;
+              border-radius: 10px;
+              margin-right: 2px;
+              box-shadow: 0 0 12px rgba(0, 0, 0, 0.582);
+              border: 2px solid rgb(9, 34, 31);
+              display: flex;
+              flex-direction: column;
+
+              .edit {
+                border: none;
+                background-color: rgb(9, 37, 34);
+                font-family: inherit;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                border-top-right-radius: 10px;
+                border-top-left-radius: 10px;
+                border-bottom: 1px solid rgba(240, 248, 255, 0.296);
+
+                .fa-pencil {
+                  color: $warning;
+                }
+
+                span {
+                  text-transform: capitalize;
+                  font-size: small;
+                  color: $light;
+                }
+
+                &:active {
+                  background-color: rgba(39, 50, 50, 0.505);
+                  transform: scale(0.95);
+
+                  .fa-pencil {
+                    color: gray;
+                  }
+
+                  span {
+                    color: gray;
+                  }
+                }
+              }
+
+              .delete {
+                border: none;
+                font-family: inherit;
+                background-color: rgb(9, 37, 34);
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                border-bottom-right-radius: 10px;
+                border-bottom-left-radius: 10px;
+                border-top: 1px solid rgba(240, 248, 255, 0.296);
+
+                .fa-trash {
+                  color: $danger;
+                }
+
+                span {
+                  text-transform: capitalize;
+                  font-size: small;
+                  color: $light;
+                }
+
+                &:active {
+                  background-color: rgba(39, 50, 50, 0.505);
+                  transform: scale(0.95);
+
+                  .fa-trash {
+                    color: gray;
+                  }
+
+                  span {
+                    color: gray;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .divider {
+          width: 100%;
+          height: 2px;
+          background-color: rgba(62, 62, 62, 0.588);
+          margin: 10px 0;
+        }
+
+        .col2 {
+          #description {
+            padding: 0 10px;
+            text-indent: 10px;
+          }
+        }
+      }
+    }
+  }
 }

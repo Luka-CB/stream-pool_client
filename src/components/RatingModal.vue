@@ -148,7 +148,16 @@ export default defineComponent({
         store.commit("TOGGLE_SUCCESS_MSG", true);
         setTimeout(() => {
           store.commit("RESET_CREATE_RATING");
-          store.dispatch("getRating", ratingModalData.value.contentId);
+          ratingModalData.value.route?.name === "movie" &&
+            store.commit("UPD_MOVIE_RATING", {
+              contentId: ratingModalData.value.contentId,
+              value: rating.value,
+            });
+          ratingModalData.value.route?.name === "tv" &&
+            store.commit("UPD_TV_RATING", {
+              contentId: ratingModalData.value.contentId,
+              value: rating.value,
+            });
           ratingModalData.value.route?.name === "profile" &&
             store.dispatch("getSomeRatedContents");
           ratingModalData.value.route?.name === "ratings" &&
@@ -176,6 +185,10 @@ export default defineComponent({
       if (isDelRatingSuccess.value) {
         store.commit("SET_SUCCESS_MSG", delRatingSuccessMsg.value);
         store.commit("TOGGLE_SUCCESS_MSG", true);
+        ratingModalData.value.route?.name === "tv" &&
+          store.commit("DEL_TV_RATING", ratingModalData.value.contentId);
+        ratingModalData.value.route?.name === "movie" &&
+          store.commit("DEL_MOVIE_RATING", ratingModalData.value.contentId);
         ratingModalData.value.route?.name === "profile" &&
           store.dispatch("getSomeRatedContents");
         ratingModalData.value.route?.name === "ratings" &&

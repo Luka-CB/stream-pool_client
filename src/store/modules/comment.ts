@@ -300,8 +300,6 @@ const actions = {
     commentId: string
   ) {
     state.isDelCommentLoading = true;
-    state.isDelCommentSuccess = false;
-    console.log(commentId);
 
     try {
       const { data } = await axios.delete(`/api/comment/delete/${commentId}`);

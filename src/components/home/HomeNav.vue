@@ -1,6 +1,13 @@
 <template>
   <div class="home-nav">
-    <div class="page-links">
+    <button
+      class="menu-btn"
+      v-if="isNavMenuIconActive"
+      @click="handleToggleMobileNav"
+    >
+      <i class="fas fa-bars" title="Show Menu"></i>
+    </button>
+    <div class="page-links" v-else>
       <router-link class="link" :to="{ name: 'movies' }">Movies</router-link>
       <router-link class="link" :to="{ name: 'tvs' }">Tv Shows</router-link>
       <router-link class="link" :to="{ name: 'about' }">About</router-link>
@@ -42,6 +49,7 @@ export default defineComponent({
 
     const user = computed(() => store.getters.user);
     const isLogoutSuccess = computed(() => store.getters.isLogoutSuccess);
+    const isNavMenuIconActive = computed(() => store.getters.navMenuIcon);
 
     watchEffect(() => {
       if (isLogoutSuccess.value) {
@@ -53,9 +61,13 @@ export default defineComponent({
       store.commit("TOGGLE_USER_OPTION", true);
     };
 
+    const handleToggleMobileNav = () => store.commit("TOGGLE_MOBILE_NAV", true);
+
     return {
       handleOpenOption,
       user,
+      isNavMenuIconActive,
+      handleToggleMobileNav,
     };
   },
 });

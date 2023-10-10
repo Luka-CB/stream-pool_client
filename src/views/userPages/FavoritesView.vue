@@ -1,12 +1,16 @@
 <template>
   <div class="favorites-container">
-    <go-back :route="prevRoute" />
-    <div class="home-icon" title="Back to home page" @click="handleNavigation">
-      <i class="fa-solid fa-house-chimney-window"></i>
+    <div class="icon-btns">
+      <go-back :route="prevRoute" />
+      <div
+        class="home-icon"
+        title="Back to home page"
+        @click="handleNavigation"
+      >
+        <i class="fa-solid fa-house-chimney-window"></i>
+      </div>
     </div>
-    <div class="nav-wrapper">
-      <profile-nav />
-    </div>
+    <profile-nav />
     <div class="fav-contents-wrapper">
       <div class="spinner" v-if="isGetFavContentLoading">
         <spinner-vue :height="4" :width="4" />
@@ -27,13 +31,13 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, watchEffect } from "vue";
+import { computed, defineComponent, watchEffect } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex";
 import GoBack from "../../components/GoBack.vue";
 import FavContentConfig from "../../components/userPages/favsView/FavContentConfig.vue";
 import FavContentCard from "../../components/userPages/favsView/FCCard.vue";
-import ProfileNav from "../../components/userPages/ProfileNav.vue";
+import ProfileNav from "../../components/navigation/ProfileNav.vue";
 import SpinnerVue from "../../components/Spinner.vue";
 
 export default defineComponent({

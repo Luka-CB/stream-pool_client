@@ -5,7 +5,7 @@ import { StateIface } from "@/store";
 
 const uid = new ShortUniqueId();
 
-interface crewIFace {
+export interface crewIFace {
   directors: {
     _id: string;
     name: string;

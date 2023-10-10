@@ -1,20 +1,22 @@
 <template>
   <div class="comments-view-container">
-    <go-back :route="prevRoute" />
-    <div class="home-icon" title="Back to home page" @click="handleNavigation">
-      <i class="fa-solid fa-house-chimney-window"></i>
+    <div class="icon-btns">
+      <go-back :route="prevRoute" />
+      <div
+        class="home-icon"
+        title="Back to home page"
+        @click="handleNavigation"
+      >
+        <i class="fa-solid fa-house-chimney-window"></i>
+      </div>
     </div>
 
-    <div class="nav-wrapper">
-      <profile-nav />
-    </div>
+    <profile-nav />
     <div class="comments-wrapper">
       <div class="spinner" v-if="isGetUserCommentsLoading">
         <spinner-vue :height="4" :width="4" />
       </div>
-      <p id="no-content" v-else-if="userComments?.length === 0">
-        no favorite content!
-      </p>
+      <p id="no-content" v-else-if="userComments?.length === 0">no comments!</p>
       <comments-config :count="userCommentsCount" />
       <div class="cards-wrapper">
         <com-card
@@ -33,7 +35,7 @@ import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex";
 import GoBack from "../../components/GoBack.vue";
 import CommentsConfig from "../../components/userPages/commentsView/CommentsConfig.vue";
-import ProfileNav from "../../components/userPages/ProfileNav.vue";
+import ProfileNav from "../../components/navigation/ProfileNav.vue";
 import ComCard from "../../components/userPages/commentsView/ComCard.vue";
 import SpinnerVue from "../../components/Spinner.vue";
 

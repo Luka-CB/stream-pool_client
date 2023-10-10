@@ -197,6 +197,11 @@ export default defineComponent({
     display: flex;
     justify-content: flex-end;
 
+    @media (max-width: 500px) {
+      justify-content: center;
+      margin-right: 0;
+    }
+
     .add-btn,
     .edit-btn,
     .del-btn {
@@ -246,6 +251,48 @@ export default defineComponent({
           .fa-trash {
             font-size: 1.6rem;
             color: black;
+          }
+        }
+      }
+    }
+
+    @media (min-width: 1920px) {
+      margin-bottom: 200px;
+
+      .add-btn,
+      .edit-btn,
+      .del-btn {
+        width: 80px;
+        height: 80px;
+        margin-right: 30px;
+
+        .fa-circle-plus {
+          font-size: 4.2rem;
+        }
+        .edit-icon,
+        .del-icon {
+          width: 65px;
+          height: 65px;
+
+          .fa-pencil,
+          .fa-trash {
+            font-size: 1.8rem;
+          }
+        }
+
+        &:hover {
+          .fa-circle-plus {
+            font-size: 4.9rem;
+          }
+          .edit-icon,
+          .del-icon {
+            width: 80px;
+            height: 80px;
+
+            .fa-pencil,
+            .fa-trash {
+              font-size: 2rem;
+            }
           }
         }
       }

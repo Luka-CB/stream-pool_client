@@ -1,22 +1,23 @@
+$commentCardWidthLg: 700px;
 $commentCardWidth: 550px;
+$commentCardWidthSm: 300px;
 
 .comments-view-container {
   min-height: 100vh;
   position: relative;
-
-  .nav-wrapper {
-    position: absolute;
-    top: 20%;
-    width: 200px;
-    height: 450px;
-  }
+  transition: all 0.2s ease-in-out;
 
   .comments-wrapper {
     width: 80%;
     min-height: 80vh;
     float: right;
-    margin-top: 50px;
+    margin-top: 100px;
     position: relative;
+    transition: all 0.2s ease-in-out;
+
+    @media (max-width: 1000px) {
+      width: 70%;
+    }
 
     .spinner {
       background-color: rgba(0, 0, 0, 0.589);
@@ -43,28 +44,86 @@ $commentCardWidth: 550px;
       align-items: center;
       justify-content: space-between;
       margin: 10px;
+      transition: all 0.2s ease-in-out;
 
       .col2 {
         display: flex;
         margin-right: 40px;
+        transition: all 0.2s ease-in-out;
 
         .sort {
           display: flex;
           align-items: center;
+          transition: all 0.2s ease-in-out;
 
           .arrows {
             margin-left: 10px;
             cursor: pointer;
+            transition: all 0.2s ease-in-out;
 
             .fa-up-long,
             .fa-down-long {
               font-size: 1.2rem;
               color: rgba(1, 193, 180, 0.423);
+              transition: all 0.2s ease-in-out;
             }
 
             .up-arrow-active,
             .down-arrow-active {
               color: rgba(1, 193, 180, 0.975);
+              transition: all 0.2s ease-in-out;
+            }
+          }
+        }
+      }
+
+      @media (min-width: 1920px) {
+        .col1 {
+          span {
+            font-size: 1.5rem;
+          }
+        }
+
+        .col2 {
+          .sort {
+            span {
+              font-size: 1.3rem;
+            }
+
+            .arrows {
+              margin-left: 15px;
+
+              .fa-up-long,
+              .fa-down-long {
+                font-size: 1.7rem;
+              }
+            }
+          }
+        }
+      }
+
+      @media (max-width: 500px) {
+        margin: 5px 10px;
+
+        .col1 {
+          font-size: 0.7rem;
+        }
+
+        .col2 {
+          margin-right: 5px;
+
+          .sort {
+            span {
+              font-size: 0.7rem;
+            }
+
+            .arrows {
+              margin-left: 5px;
+
+              .fa-up-long,
+              .fa-down-long {
+                font-size: 1rem;
+              }
             }
           }
         }
@@ -79,6 +138,7 @@ $commentCardWidth: 550px;
       grid-template-columns: repeat(2, 1fr);
       justify-items: center;
       gap: 2em 1em;
+      transition: all 0.2s ease-in-out;
 
       .com-card {
         position: relative;
@@ -96,12 +156,14 @@ $commentCardWidth: 550px;
         .card-header {
           width: $commentCardWidth;
           padding: 10px;
+          transition: all 0.2s ease-in-out;
 
           #card-title {
             display: inline;
             text-transform: capitalize;
             color: $primary;
             cursor: pointer;
+            transition: all 0.2s ease-in-out;
 
             &:hover {
               text-decoration: underline;
@@ -113,10 +175,13 @@ $commentCardWidth: 550px;
           height: 180px;
           border-top: 1px solid rgba(128, 128, 128, 0.404);
           border-bottom: 1px solid rgba(128, 128, 128, 0.404);
+          transition: all 0.2s ease-in-out;
+
           #body-content {
             font-size: small;
             padding: 10px;
             text-indent: 10px;
+            transition: all 0.2s ease-in-out;
           }
         }
 
@@ -125,15 +190,18 @@ $commentCardWidth: 550px;
           justify-content: space-between;
           align-items: flex-end;
           padding: 10px;
+          transition: all 0.2s ease-in-out;
 
           .col1 {
             #date {
               margin-top: 10px;
               color: $primary;
+              transition: all 0.2s ease-in-out;
 
               em {
                 color: rgba(240, 248, 255, 0.616);
                 font-weight: 200;
+                transition: all 0.2s ease-in-out;
               }
             }
 
@@ -141,10 +209,12 @@ $commentCardWidth: 550px;
               margin-top: 20px;
               color: $primary;
               cursor: pointer;
+              transition: all 0.2s ease-in-out;
 
               em {
                 color: rgba(240, 248, 255, 0.616);
                 font-weight: 200;
+                transition: all 0.2s ease-in-out;
               }
 
               &:hover {
@@ -158,6 +228,7 @@ $commentCardWidth: 550px;
             justify-content: flex-end;
             align-items: center;
             margin-right: 10px;
+            transition: all 0.2s ease-in-out;
 
             .edit,
             .delete {
@@ -174,6 +245,7 @@ $commentCardWidth: 550px;
 
             .edit {
               margin-right: 20px;
+              transition: all 0.2s ease-in-out;
 
               .fa-pencil {
                 font-size: 1.1rem;
@@ -191,6 +263,8 @@ $commentCardWidth: 550px;
             }
 
             .delete {
+              transition: all 0.2s ease-in-out;
+
               &:hover {
                 background-color: rgba(240, 248, 255, 0.05);
 
@@ -203,6 +277,250 @@ $commentCardWidth: 550px;
             }
           }
         }
+      }
+
+      @media (min-width: 1920px) {
+        .com-card {
+          width: $commentCardWidthLg;
+          height: 450px;
+
+          .card-header {
+            width: $commentCardWidthLg;
+
+            #card-title {
+              font-size: 1.5rem;
+            }
+          }
+
+          .card-body {
+            height: 260px;
+
+            #body-content {
+              font-size: large;
+            }
+          }
+
+          .card-footer {
+            padding: 10px;
+
+            .col1 {
+              #date {
+                margin-top: 5px;
+                font-size: 1.2rem;
+
+                em {
+                  font-size: 1.1rem;
+                }
+              }
+
+              #replies {
+                margin-top: 30px;
+                font-size: 1.5rem;
+              }
+            }
+
+            .col2 {
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+              margin-right: 10px;
+
+              .edit,
+              .delete {
+                width: 70px;
+                height: 70px;
+              }
+
+              .edit {
+                margin-right: 20px;
+
+                .fa-pencil {
+                  font-size: 1.8rem;
+                }
+
+                &:hover {
+                  background-color: rgba(240, 248, 255, 0.05);
+
+                  .fa-pencil {
+                    font-size: 1.9rem;
+                    color: $warning;
+                  }
+                }
+              }
+
+              .delete {
+                .fa-trash {
+                  font-size: 1.6rem;
+                }
+
+                &:hover {
+                  background-color: rgba(240, 248, 255, 0.05);
+
+                  .fa-trash {
+                    color: $danger;
+                    font-size: 1.8rem;
+                    transition: all 0.1s ease-in-out;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      @media (max-width: 1400px) {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2em 0.5em;
+
+        .com-card {
+          width: $commentCardWidthSm;
+          height: 220px;
+          border-radius: 5px;
+
+          .card-header {
+            width: $commentCardWidthSm;
+            padding: 10px;
+
+            #card-title {
+              font-size: medium;
+            }
+          }
+
+          .card-body {
+            height: 100px;
+
+            #body-content {
+              font-size: 0.7rem;
+            }
+          }
+
+          .card-footer {
+            padding: 5px;
+
+            .col1 {
+              #date {
+                margin-top: 5px;
+                font-size: 0.7rem;
+
+                em {
+                  font-size: 0.6rem;
+                }
+              }
+
+              #replies {
+                margin-top: 10px;
+                font-size: small;
+              }
+            }
+
+            .col2 {
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+              margin-right: 10px;
+
+              .edit,
+              .delete {
+                width: 40px;
+                height: 40px;
+              }
+
+              .edit {
+                margin-right: 20px;
+                background-color: rgba(240, 248, 255, 0.05);
+
+                .fa-pencil {
+                  font-size: 1rem;
+                  color: $warning;
+                }
+              }
+
+              .delete {
+                background-color: rgba(240, 248, 255, 0.05);
+
+                .fa-trash {
+                  color: $danger;
+                  font-size: 1rem;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      @media (max-width: 350px) {
+        grid-template-columns: none;
+
+        .com-card {
+          width: 240px;
+          height: 190px;
+          border-radius: 5px;
+
+          .card-header {
+            width: auto;
+            padding: 5px;
+
+            #card-title {
+              font-size: 0.7rem;
+            }
+          }
+
+          .card-body {
+            height: 90px;
+
+            #body-content {
+              font-size: 0.6rem;
+            }
+          }
+
+          .card-footer {
+            padding: 5px;
+
+            .col1 {
+              #date {
+                margin-top: 3px;
+                font-size: 0.6rem;
+              }
+
+              #replies {
+                font-size: 0.7rem;
+              }
+            }
+
+            .col2 {
+              margin-right: 5px;
+
+              .edit,
+              .delete {
+                width: 30px;
+                height: 30px;
+              }
+
+              .edit {
+                margin-right: 10px;
+
+                .fa-pencil {
+                  font-size: 0.8rem;
+                }
+              }
+
+              .delete {
+                .fa-trash {
+                  font-size: 0.8rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    @media (max-width: 800px) {
+      width: 100%;
+
+      .cards-wrapper {
+        border-top-left-radius: unset;
+        padding: 30px 10px;
       }
     }
   }
