@@ -189,7 +189,6 @@ export default defineComponent({
         setTimeout(() => {
           store.commit("RESET_COMMENTS");
           store.commit("RESET_PROMPT");
-          store.commit("RESET_PROMPT");
         }, 1000);
       }
     });

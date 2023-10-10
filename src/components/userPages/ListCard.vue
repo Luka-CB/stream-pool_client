@@ -59,7 +59,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, watchEffect } from "vue";
+import { computed, defineComponent, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex";
 import SpinnerAlt from "../SpinnerAlt.vue";
@@ -88,36 +88,16 @@ export default defineComponent({
     //////// DELETE LIST ////////
     const listId = ref("");
 
-    const promptKeyword = computed(() => store.getters.promptKeyword);
-    const isAnswerYes = computed(() => store.getters.isAnswerYes);
     const isDelListLoading = computed(() => store.getters.delListLoading);
-    const isDelListSuccess = computed(() => store.getters.delListSuccess);
-    const successMsg = computed(() => store.getters.listSuccessMsg);
-
-    watchEffect(() => {
-      if (isDelListSuccess.value) {
-        store.commit("SET_SUCCESS_MSG", successMsg.value);
-        store.commit("TOGGLE_SUCCESS_MSG", true);
-        setTimeout(() => {
-          store.commit("RESET_LIST");
-          store.commit("RESET_PROMPT");
-          store.dispatch("getSomeLists");
-          store.dispatch("getUserLists");
-        }, 2000);
-      }
-    });
-
-    watchEffect(() => {
-      if (promptKeyword.value === "deleteListCard" && isAnswerYes.value) {
-        store.dispatch("deleteList", listId.value);
-      }
-    });
 
     const handleOpenPrompt = (liId: string) => {
       listId.value = liId;
+      store.commit("SET_PROMPT_ID", liId);
       store.commit("TOGGLE_PROMPT", true);
       store.commit("SET_PROMPT_KEYWORD", "deleteListCard");
     };
+
+    //////////////////////////////////////
 
     const handleNavigation = (liId: string) => {
       router.push({ name: "listitems", params: { listId: liId } });

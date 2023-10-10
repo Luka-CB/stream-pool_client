@@ -75,6 +75,32 @@ export default defineComponent({
       });
     };
 
+    //////// DELETE LIST ////////
+
+    const promptKeyword = computed(() => store.getters.promptKeyword);
+    const isAnswerYes = computed(() => store.getters.isAnswerYes);
+    const promptId = computed(() => store.getters.promptId);
+    const isDelListSuccess = computed(() => store.getters.delListSuccess);
+    const successMsg = computed(() => store.getters.listSuccessMsg);
+
+    watchEffect(() => {
+      if (isDelListSuccess.value) {
+        store.commit("SET_SUCCESS_MSG", successMsg.value);
+        store.commit("TOGGLE_SUCCESS_MSG", true);
+        setTimeout(() => {
+          store.dispatch("getSomeLists");
+          store.commit("RESET_LIST");
+          store.commit("RESET_PROMPT");
+        }, 2000);
+      }
+    });
+
+    watchEffect(() => {
+      if (promptKeyword.value === "deleteListCard" && isAnswerYes.value) {
+        store.dispatch("deleteList", promptId.value);
+      }
+    });
+
     return {
       userListsWrapperStyle,
       lists,

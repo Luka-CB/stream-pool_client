@@ -76,6 +76,31 @@ export default defineComponent({
       });
     };
 
+    //////// DELETE COMMENT ////////
+
+    const promptKeyword = computed(() => store.getters.promptKeyword);
+    const isAnswerYes = computed(() => store.getters.isAnswerYes);
+    const promptId = computed(() => store.getters.promptId);
+    const isDelCommentSuccess = computed(() => store.getters.delCommentSuccess);
+
+    watchEffect(() => {
+      if (isDelCommentSuccess.value) {
+        store.commit("SET_SUCCESS_MSG", "Deleted Successfully!");
+        store.commit("TOGGLE_SUCCESS_MSG", true);
+        setTimeout(() => {
+          store.dispatch("getSomeUserComments");
+          store.commit("RESET_COMMENTS");
+          store.commit("RESET_PROMPT");
+        }, 2000);
+      }
+    });
+
+    watchEffect(() => {
+      if (promptKeyword.value === "profileCommentCard" && isAnswerYes.value) {
+        store.dispatch("deleteComment", promptId.value);
+      }
+    });
+
     return {
       userComments,
       commentsWrapperStyle,

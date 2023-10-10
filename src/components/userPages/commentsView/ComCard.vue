@@ -79,7 +79,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, watchEffect } from "vue";
+import { computed, defineComponent, ref } from "vue";
 import { useStore } from "vuex";
 import { useWindowWidth } from "../../../composables/windowResize";
 import SpinnerAlt from "../../SpinnerAlt.vue";
@@ -96,20 +96,12 @@ export default defineComponent({
     const commentId = ref("");
 
     const isDelCommentLoading = computed(() => store.getters.delCommentLoading);
-    const isDelCommentSuccess = computed(() => store.getters.delCommentSuccess);
-
-    watchEffect(() => {
-      if (isDelCommentSuccess.value) {
-        store.dispatch("getUserComments");
-        store.commit("RESET_COMMENTS");
-      }
-    });
 
     const handleOpenPrompt = (id: string) => {
       commentId.value = id;
-      if (confirm("Are you sure!")) {
-        store.dispatch("deleteComment", id);
-      }
+      store.commit("SET_PROMPT_ID", id);
+      store.commit("TOGGLE_PROMPT", true);
+      store.commit("SET_PROMPT_KEYWORD", "deleteComCard");
     };
 
     ////////////////////////////////////////////
