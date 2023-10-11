@@ -26,6 +26,7 @@ import ContentForm from "../components/content/CreateForm.vue";
 import ContentPoster from "../components/content/ContentPoster.vue";
 import GoBack from "../components/GoBack.vue";
 import SpinnerVue from "../components/Spinner.vue";
+import { useHead } from "@vueuse/head";
 
 export default defineComponent({
   name: "CreateView",
@@ -39,6 +40,10 @@ export default defineComponent({
     const contentType = computed(() => route.fullPath.split("/")[2]);
     const imgError = computed(() => store.getters.imgError);
     const isLoading = computed(() => store.getters.isAddContentLoading);
+
+    useHead({
+      title: `Create new ${contentType.value}`,
+    });
 
     const routeName = computed(() => route.name);
     watchEffect(() => {

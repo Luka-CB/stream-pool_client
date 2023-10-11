@@ -33,6 +33,7 @@ import AccountForm from "../../components/userPages/accountView/AccountForm.vue"
 import DeleteAccount from "../../components/userPages/accountView/DeleteAccount.vue";
 import ProfileNav from "../../components/navigation/ProfileNav.vue";
 import SpinnerVue from "../../components/Spinner.vue";
+import { useHead } from "@vueuse/head";
 
 export default defineComponent({
   components: {
@@ -65,6 +66,10 @@ export default defineComponent({
     const handleNavigation = () => {
       router.push({ name: "home" });
     };
+
+    useHead({
+      title: "Update Account",
+    });
 
     //////// DELETE ACCOUNT ////////
     const promptKeyword = computed(() => store.getters.promptKeyword);

@@ -19,7 +19,7 @@
           >Movies</router-link
         >
         <router-link :to="{ name: 'tvs' }" @click="handleCloseMobileNav"
-          >Tv Shows</router-link
+          >Tv Series</router-link
         >
         <router-link :to="{ name: 'about' }" @click="handleCloseMobileNav"
           >About</router-link

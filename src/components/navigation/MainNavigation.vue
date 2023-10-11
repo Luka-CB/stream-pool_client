@@ -21,7 +21,7 @@
             >Movies</router-link
           >
           <router-link :to="{ name: 'tvs' }" @click="handleReset"
-            >Tv Shows</router-link
+            >Tv Series</router-link
           >
           <router-link :to="{ name: 'about' }" @click="handleReset"
             >About</router-link

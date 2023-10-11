@@ -29,6 +29,7 @@ import FavContent from "../../components/userPages/profileView/FavContent.vue";
 import UserComments from "../../components/userPages/profileView/UserComments.vue";
 import UserLists from "../../components/userPages/profileView/UserLists.vue";
 import { useStore } from "vuex";
+import { useHead } from "@vueuse/head";
 
 export default defineComponent({
   name: "ProfileView",
@@ -47,6 +48,8 @@ export default defineComponent({
     const router = useRouter();
     const route = useRoute();
 
+    const user = computed(() => store.getters.user);
+
     const routeName = computed(() => route.name);
     watchEffect(() => {
       if (routeName.value) {
@@ -59,6 +62,10 @@ export default defineComponent({
     const handleNavigation = () => {
       router.push({ name: "home" });
     };
+
+    useHead({
+      title: `${user.value?.username}'s Profile`,
+    });
 
     return {
       handleNavigation,

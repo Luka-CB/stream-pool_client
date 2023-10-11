@@ -39,6 +39,7 @@ import FavContentConfig from "../../components/userPages/favsView/FavContentConf
 import FavContentCard from "../../components/userPages/favsView/FCCard.vue";
 import ProfileNav from "../../components/navigation/ProfileNav.vue";
 import SpinnerVue from "../../components/Spinner.vue";
+import { useHead } from "@vueuse/head";
 
 export default defineComponent({
   components: {
@@ -76,6 +77,10 @@ export default defineComponent({
     const handleNavigation = () => {
       router.push({ name: "home" });
     };
+
+    useHead({
+      title: computed(() => `Favorite titles | ${favContentCount.value ?? 0}`),
+    });
 
     return {
       handleNavigation,

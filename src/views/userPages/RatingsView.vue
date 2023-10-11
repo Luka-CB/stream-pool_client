@@ -39,6 +39,7 @@ import RatedContentConfig from "../../components/userPages/ratingsView/RatedCont
 import { useStore } from "vuex";
 import SpinnerVue from "../../components/Spinner.vue";
 import ProfileNav from "../../components/navigation/ProfileNav.vue";
+import { useHead } from "@vueuse/head";
 
 export default defineComponent({
   components: {
@@ -76,6 +77,12 @@ export default defineComponent({
     const handleNavigation = () => {
       router.push({ name: "home" });
     };
+
+    /////////////////////////////////////
+
+    useHead({
+      title: computed(() => `Your Ratings | ${ratedContentCount.value ?? 0}`),
+    });
 
     return {
       handleNavigation,

@@ -20,6 +20,7 @@
 </template>
 
 <script lang="ts">
+import { useHead } from "@vueuse/head";
 import { computed, defineComponent, watchEffect } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex";
@@ -62,6 +63,10 @@ export default defineComponent({
           store.commit("RESET_UPDATE_CONTENT");
         }, 2000);
       }
+    });
+
+    useHead({
+      title: "Update " + content.value?.title,
     });
 
     return {

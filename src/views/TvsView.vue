@@ -17,6 +17,7 @@ import TopPanel from "../components/search&sort/TopPanel.vue";
 import MediaContent from "../components/content/index.vue";
 import PaginationVue from "../components/PaginationVue.vue";
 import { useRoute } from "vue-router";
+import { useHead } from "@vueuse/head";
 
 export default defineComponent({
   name: "TvsView",
@@ -54,6 +55,10 @@ export default defineComponent({
       } else {
         store.dispatch("fetchTvs", { userId: user.value?.id });
       }
+    });
+
+    useHead({
+      title: "Tv Series",
     });
 
     return {

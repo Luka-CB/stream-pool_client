@@ -65,6 +65,7 @@ import { useStore } from "vuex";
 import GoBack from "../components/GoBack.vue";
 import SpinnerVue from "../components/Spinner.vue";
 import { useRoute, useRouter } from "vue-router";
+import { useHead } from "@vueuse/head";
 
 export default defineComponent({
   name: "SignupView",
@@ -118,6 +119,10 @@ export default defineComponent({
           window.location.reload();
         }, 300);
       }
+    });
+
+    useHead({
+      title: "Sign up on stream-pool",
     });
 
     return {

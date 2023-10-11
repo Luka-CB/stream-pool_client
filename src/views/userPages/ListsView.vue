@@ -33,6 +33,7 @@ import ListCard from "../../components/userPages/ListCard.vue";
 import ListsConfig from "../../components/userPages/listsView/ListsConfig.vue";
 import ProfileNav from "../../components/navigation/ProfileNav.vue";
 import SpinnerVue from "../../components/Spinner.vue";
+import { useHead } from "@vueuse/head";
 
 export default defineComponent({
   components: { GoBack, ProfileNav, ListsConfig, ListCard, SpinnerVue },
@@ -78,6 +79,8 @@ export default defineComponent({
       }
     });
 
+    ///////////////////////////////////////////////////
+
     const lists = computed(() => store.getters.userLists);
     const listsCount = computed(() => store.getters.listsCount);
     const isGetListsLoading = computed(() => store.getters.getUserListsLoading);
@@ -89,6 +92,12 @@ export default defineComponent({
     const handleNavigation = () => {
       router.push({ name: "home" });
     };
+
+    //////////////////////////////////////
+
+    useHead({
+      title: computed(() => `Your Lists | ${listsCount.value ?? 0}`),
+    });
 
     return {
       handleNavigation,

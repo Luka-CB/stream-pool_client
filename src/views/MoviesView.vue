@@ -17,6 +17,7 @@ import { useStore } from "vuex";
 import MediaContent from "../components/content/index.vue";
 import { useRoute } from "vue-router";
 import PaginationVue from "../components/PaginationVue.vue";
+import { useHead } from "@vueuse/head";
 
 export default defineComponent({
   name: "MoviesView",
@@ -53,6 +54,8 @@ export default defineComponent({
         store.dispatch("fetchMovies", { userId: user.value?.id });
       }
     });
+
+    useHead({ title: "Movies" });
 
     return {
       movies,

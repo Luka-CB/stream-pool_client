@@ -9,7 +9,7 @@
     </button>
     <div class="page-links" v-else>
       <router-link class="link" :to="{ name: 'movies' }">Movies</router-link>
-      <router-link class="link" :to="{ name: 'tvs' }">Tv Shows</router-link>
+      <router-link class="link" :to="{ name: 'tvs' }">Tv Series</router-link>
       <router-link class="link" :to="{ name: 'about' }">About</router-link>
     </div>
     <div class="auth">

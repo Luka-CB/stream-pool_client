@@ -57,6 +57,7 @@ import ListitemsConfig from "../../components/userPages/listitemsView/ListitemsC
 import ListItem from "../../components/userPages/listitemsView/Listitem.vue";
 import SpinnerVue from "../../components/Spinner.vue";
 import { useWindowWidth } from "../../composables/windowResize";
+import { useHead } from "@vueuse/head";
 
 export default defineComponent({
   components: {
@@ -106,6 +107,15 @@ export default defineComponent({
     };
 
     const { windowWidth } = useWindowWidth();
+
+    useHead({
+      title: computed(
+        () =>
+          `${listTitle.value ?? "List"} | ${
+            listItemsCount.value === 1 ? "Title" : "Titles"
+          }: ${listItemsCount.value ?? 0}`
+      ),
+    });
 
     return {
       handleNavigation,

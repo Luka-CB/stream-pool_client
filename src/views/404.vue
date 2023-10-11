@@ -29,7 +29,7 @@ export default defineComponent({
     const router = useRouter();
 
     useHead({
-      title: "404",
+      title: "Not Found | 404",
     });
 
     const goBackHandler = () => router.go(-1);

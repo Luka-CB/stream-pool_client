@@ -38,6 +38,7 @@ import CommentsConfig from "../../components/userPages/commentsView/CommentsConf
 import ProfileNav from "../../components/navigation/ProfileNav.vue";
 import ComCard from "../../components/userPages/commentsView/ComCard.vue";
 import SpinnerVue from "../../components/Spinner.vue";
+import { useHead } from "@vueuse/head";
 
 export default defineComponent({
   components: { GoBack, ProfileNav, CommentsConfig, ComCard, SpinnerVue },
@@ -93,6 +94,12 @@ export default defineComponent({
       if (promptKeyword.value === "deleteComCard" && isAnswerYes.value) {
         store.dispatch("deleteComment", promptId.value);
       }
+    });
+
+    ////////////////////////////////////////
+
+    useHead({
+      title: computed(() => `Your Comments | ${userCommentsCount.value}`),
     });
 
     return {

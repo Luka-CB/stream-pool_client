@@ -63,6 +63,7 @@ import SearchBar from "../components/search&sort/SearchBar.vue";
 import UpdateUrlModal from "../components/details/UpdateUrlModal.vue";
 import UpdatePoster from "../components/details/UpdatePoster.vue";
 import SpinnerVue from "../components/Spinner.vue";
+import { useHead } from "@vueuse/head";
 
 export default defineComponent({
   name: "DetailsView",
@@ -141,6 +142,12 @@ export default defineComponent({
       store.commit("TOGGLE_PROMPT", true);
       store.commit("SET_PROMPT_KEYWORD", "deleteContent");
     };
+
+    //////////////////////////////////////
+
+    useHead({
+      title: computed(() => content.value?.title),
+    });
 
     return {
       content,

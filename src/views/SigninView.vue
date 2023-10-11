@@ -40,6 +40,7 @@
 </template>
 
 <script lang="ts">
+import { useHead } from "@vueuse/head";
 import { computed, defineComponent, ref, watchEffect } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex";
@@ -90,6 +91,8 @@ export default defineComponent({
         }, 300);
       }
     });
+
+    useHead({ title: "Sign in to Stream-pool" });
 
     return {
       username,

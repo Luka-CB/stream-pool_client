@@ -18,6 +18,7 @@ import HomeLanding from "../components/home/HomeLanding.vue";
 import SearchBar from "../components/search&sort/SearchBar.vue";
 import HomeContent from "../components/home/HomeContent.vue";
 import { useStore } from "vuex";
+import { useHead } from "@vueuse/head";
 
 export default defineComponent({
   name: "HomeView",
@@ -31,6 +32,10 @@ export default defineComponent({
     const store = useStore();
 
     const showLandingContent = ref(true);
+
+    useHead({
+      title: "Stream-Pool | Home",
+    });
 
     watchEffect(() => {
       window.addEventListener("scroll", () => {
