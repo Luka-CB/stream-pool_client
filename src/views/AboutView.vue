@@ -28,7 +28,10 @@
           <div class="btn-wrapper">
             <b id="here">here</b>
             <i class="fa-solid fa-arrow-right-long"></i>
-            <a href="#" target="_blank">
+            <a
+              href="https://portfolio-gamma-six-63.vercel.app/"
+              target="_blank"
+            >
               <button className="link-btn">
                 <i class="fa-solid fa-globe icon"></i>
                 <span id="btn-name">Portfolio</span>
@@ -42,7 +45,10 @@
           <div class="btn-wrapper">
             <b id="here">here</b>
             <i class="fa-solid fa-arrow-right-long"></i>
-            <a href="#" target="_blank">
+            <a
+              href="https://github.com/Luka-CB/stream-pool_client"
+              target="_blank"
+            >
               <button className="link-btn">
                 <i class="fa-brands fa-github icon"></i>
                 <span id="btn-name">Github</span>
