@@ -102,6 +102,8 @@ export default defineComponent({
     const defaultGenre = ref(route.query?.genre ?? "");
     const defaultYear = ref(route.query?.year ?? "");
 
+    const user = computed(() => store.getters.user);
+
     const genres = computed(() => store.getters.genres);
     store.dispatch("fetchGenres");
 
@@ -122,6 +124,7 @@ export default defineComponent({
         ...route.query,
         year: target.value,
         page: 1,
+        userId: user.value?.id,
       });
     };
 
@@ -135,6 +138,7 @@ export default defineComponent({
         ...route.query,
         genre: target.value,
         page: 1,
+        userId: user.value?.id,
       });
     };
 
@@ -157,6 +161,7 @@ export default defineComponent({
         ...route.query,
         rating: ratingSort.value,
         byYear: "",
+        userId: user.value?.id,
       });
     };
 
@@ -179,6 +184,7 @@ export default defineComponent({
         ...route.query,
         rating: "",
         byYear: byYearSort.value,
+        userId: user.value?.id,
       });
     };
 
