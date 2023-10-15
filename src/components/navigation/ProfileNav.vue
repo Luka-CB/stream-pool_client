@@ -16,7 +16,9 @@
         <button class="close-btn" @click="handleCloseDrawer">
           <i class="fa-solid fa-circle-xmark"></i>
         </button>
-        <profile-nav-items />
+        <div class="nav-wrapper">
+          <profile-nav-items />
+        </div>
       </div>
     </div>
     <div class="nav-wrapper" v-else>
