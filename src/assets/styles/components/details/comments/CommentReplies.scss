@@ -328,6 +328,7 @@
         align-items: center;
         justify-content: center;
         z-index: 10;
+        animation: fade 0.2s ease-in;
 
         .prompt-body {
           background-color: rgb(4, 44, 41);
@@ -336,6 +337,7 @@
           border: 2px solid rgba(4, 86, 79, 0.559);
           border-top: 6px solid rgba(4, 86, 79, 0.559);
           padding: 20px;
+          animation: zoom 0.2s ease-in;
 
           p {
             text-align: center;

@@ -46,7 +46,8 @@ export default defineComponent({
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 10;
+  z-index: 1000;
+  animation: fade 0.2s ease-in;
 
   .prompt-body {
     background-color: rgb(4, 44, 41);
@@ -55,6 +56,7 @@ export default defineComponent({
     border: 2px solid rgba(4, 86, 79, 0.559);
     border-top: 6px solid rgba(4, 86, 79, 0.559);
     padding: 20px;
+    animation: zoom 0.2s ease-in;
 
     p {
       text-align: center;

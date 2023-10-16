@@ -6,9 +6,7 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.673);
   z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  animation: fade 0.2s ease-in;
 
   .list-modal-container {
     background-color: rgb(4, 44, 41);
@@ -18,11 +16,15 @@
     border-radius: 20px;
     border: 2px solid rgba(4, 86, 79, 0.559);
     border-top: 6px solid rgba(4, 86, 79, 0.559);
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     transition: all 0.2s ease-in-out;
+    animation: slideDown 0.2s ease-in;
 
     @media (max-width: 900px) {
       width: 95%;

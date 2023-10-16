@@ -78,6 +78,7 @@ export default defineComponent({
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: fade 0.2s ease-in;
 
   .modal-body {
     position: relative;
@@ -92,6 +93,7 @@ export default defineComponent({
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    animation: zoom 0.2s ease-in;
 
     .spinner {
       position: absolute;

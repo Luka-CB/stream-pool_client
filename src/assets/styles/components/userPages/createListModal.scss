@@ -9,6 +9,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: fade 0.2s ease-in;
 
   .create-list-modal-container {
     background-color: rgb(4, 44, 41);
@@ -22,6 +23,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    animation: zoom 0.2s ease-in;
 
     input {
       width: 70%;

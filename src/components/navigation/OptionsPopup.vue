@@ -92,6 +92,7 @@ export default defineComponent({
   border-radius: 10px;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.529);
   z-index: 11;
+  animation: fade 0.1s ease-in;
 
   .option-value {
     padding: 10px;
@@ -135,6 +136,15 @@ export default defineComponent({
 
     .logout {
       font-size: 1.3rem;
+    }
+  }
+
+  @keyframes fade {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
     }
   }
 }

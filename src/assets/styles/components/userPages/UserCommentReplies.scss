@@ -6,6 +6,7 @@
   height: 100%;
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.707);
+  animation: fade 0.2s ease-in;
 
   .replies-modal-container {
     position: fixed;
@@ -19,6 +20,7 @@
     border-radius: 20px;
     border: 2px solid rgba(4, 86, 79, 0.559);
     border-top: 6px solid rgba(4, 86, 79, 0.559);
+    animation: slideDown 0.2s ease-in;
 
     .spinner {
       position: absolute;
